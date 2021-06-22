@@ -26,6 +26,9 @@ h2{
     font-size: 0.55cm;
     color: rgb(10, 102, 163);
 }
+h3{
+    color: white;
+}
 
 img.lado {
     float: right;
