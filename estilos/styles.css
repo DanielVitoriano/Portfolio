@@ -4,30 +4,30 @@
 }
 
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: tomato;
 }
 
 main {
-    background-color:  rgb(0, 0, 0);
+    background-color: white;
     width: 620px;
     margin: auto;
     padding: 10px;
     box-shadow: 3px 3px 5px black;
 }
 p{
-    color: white;
+    color: #FA503C
 }
 
 h1{
     font-size: 0.5cm;
-    color: rgb(255, 255, 255);
+    color: #612A24;
 }
 h2{
     font-size: 0.55cm;
-    color: rgb(10, 102, 163);
+    color: #663631;
 }
 h3{
-    color: white;
+    color: #AD4B40;
 }
 
 img.lado {
@@ -37,10 +37,10 @@ img.lado {
 a{
     text-decoration: none;
     font-weight: bold;
-    color: rgb(84, 37, 255);
+    color: #612A24;
 }
 
 a:hover {
     text-decoration: none;
-    color: rgb(252, 16, 16);
+    color: #FA503C;
 }
