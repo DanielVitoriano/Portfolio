@@ -12,15 +12,17 @@ main {
     width: 620px;
     margin: auto;
     padding: 10px;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.74);
 }
 p{
+    text-align: justify;
     color: #FA503C
 }
 
 h1{
     font-size: 0.5cm;
     color: #612A24;
+    text-shadow: 1px 1px 2px #50221da9;
 }
 h2{
     font-size: 0.55cm;
