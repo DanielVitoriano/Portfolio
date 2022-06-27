@@ -40,6 +40,7 @@ export default class GameScene extends Phaser.Scene{
         //Jogador
         const spawnPlayer = map.findObject("Player", obj => obj.name === "PlayerSpawn");
         player = new Player(this, spawnPlayer.x, spawnPlayer.y);
+        
         //colisores
         ground.setCollisionByProperty({"Collider": true});
         this.physics.add.collider(player, ground);
@@ -66,6 +67,15 @@ export default class GameScene extends Phaser.Scene{
     }
 }
 
-function hitEnemy(){
-    this.scene.restart();
+function hitEnemy(player, Enemy){
+    if(player.y < Enemy.y){
+        Enemy.disableBody(true, true);
+    }
+    else{
+        console.log(player.hit);
+        player.hit = true;
+        player.anims.play('hit');
+    }
+    
+    
 }

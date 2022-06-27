@@ -1,11 +1,14 @@
 export default class Enemy extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
         super(scene, x, y, 'Enemy_01_idle', 0)
-
+        
         this.scene = scene;
         this.scene.physics.world.enable(this);
         this.scene.add.existing(this);
 
+        this.body.setSize(20, 28, true);
+        this.body.setOffset(14, 12);
+        
         this.timeEvent = this.scene.time.addEvent({
             delay: 3000,
             callback: this.Move,
@@ -35,7 +38,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
     }
 
     Move(){
-        const randNumber = Math.floor(Math.random() * 4 + 1);
+        const randNumber = Math.floor(Math.random() * 2 + 1);
         switch(randNumber){
             case 1:
                 this.setVelocityX(100);
