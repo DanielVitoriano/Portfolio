@@ -28,14 +28,17 @@ export default class LoadingScene extends Phaser.Scene{
         });
 
         //recursos
-        this.load.image("tiles", "../assets/Tileset(16x16)/Tileset.png");
-        this.load.tilemapTiledJSON("map", "../assets/Tileset(16x16)/map.json");
-        this.load.image("bg1", "../assets/Background/Layer_01.png");
-        this.load.image("bg2", "../assets/Background/Layer_02.png");
-        this.load.image("bg3", "../assets/Background/Layer_03.png");
-        this.load.spritesheet("Player_Idle", "../assets/Sprites/Player/idle.png",{ frameWidth: 35, frameHeight: 35 });
-        this.load.spritesheet("Player_Walk", "../assets/Sprites/Player/walk.png",{ frameWidth: 35, frameHeight: 35 });
-        this.load.spritesheet("Player_Jump", "../assets/Sprites/Player/jump.png",{ frameWidth: 35, frameHeight: 35 });
+        this.load.image("tiles", "../Tiny Platformer/assets/Tileset(16x16)/Tileset.png");
+        this.load.tilemapTiledJSON("map", "../Tiny Platformer/assets/Tileset(16x16)/map.json");
+        this.load.image("bg1", "../Tiny Platformer/assets/Background/Layer_01.png");
+        this.load.image("bg2", "../Tiny Platformer/assets/Background/Layer_02.png");
+        this.load.image("bg3", "../Tiny Platformer/assets/Background/Layer_03.png");
+        this.load.spritesheet("Player_Idle", "../Tiny Platformer/assets/Sprites/Player/idle.png",{ frameWidth: 35, frameHeight: 35 });
+        this.load.spritesheet("Player_Walk", "../Tiny Platformer/assets/Sprites/Player/walk.png",{ frameWidth: 35, frameHeight: 35 });
+        this.load.spritesheet("Player_Jump", "../Tiny Platformer/assets/Sprites/Player/jump.png",{ frameWidth: 35, frameHeight: 35 });
+        this.load.spritesheet("Enemy_01_walk", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/walk.png",{ frameWidth: 48, frameHeight:45 });
+        this.load.spritesheet("Enemy_01_idle", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/idle.png",{ frameWidth: 48, frameHeight:45 });
+        this.load.spritesheet("Enemy_01_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/hit.png",{ frameWidth: 48, frameHeight:45 });
 
     }
     create(){

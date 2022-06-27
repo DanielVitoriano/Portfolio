@@ -1,6 +1,8 @@
 import Player from "../scripts/Player.js";
+import Enemies from "../scripts/Enemies.js";
 
 let player;
+let cam;
 
 export default class GameScene extends Phaser.Scene{
     constructor(){
@@ -44,12 +46,26 @@ export default class GameScene extends Phaser.Scene{
 
         grass2.setDepth(10);
         //camera
-        const cam = this.cameras.main;
+        cam = this.cameras.main;
         cam.startFollow(player);
-        cam.setBounds(0, 0, 12222222, map.heightInPixels);
-        console.log(player.x , player.y);
+        cam.setBounds(0, 0, ground.width, map.heightInPixels);
+
+        //inimigos
+        this.Enemies = map.createFromObjects("Enemy", "Enemy", {});
+        this.enemiesGroup = new Enemies(this.physics.world, this, [], this.Enemies);
+        this.physics.add.collider(this.enemiesGroup, ground);
+        this.physics.add.collider(player, this.enemiesGroup, hitEnemy, null, this);
     }
     update(){
+        this.bg1.tilePositionX = cam.scrollX * .3;
         player.Move();
+        //
+        if(player.y > 400){
+            this.scene.restart();
+        }
     }
+}
+
+function hitEnemy(){
+    this.scene.restart();
 }

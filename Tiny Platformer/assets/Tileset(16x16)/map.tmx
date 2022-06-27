@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="7">
+<map version="1.8" tiledversion="1.8.6" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="9">
  <editorsettings>
   <export target="map.json" format="json"/>
  </editorsettings>
@@ -126,7 +126,7 @@
    </properties>
   </tile>
  </tileset>
- <layer id="2" name="grass" width="20" height="20">
+ <layer id="2" name="grass" width="20" height="20" offsetx="242" offsety="510">
   <data encoding="csv">
    <chunk x="-16" y="-16" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -238,7 +238,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="1" name="ground" width="20" height="20">
+ <layer id="1" name="ground" width="20" height="20" offsetx="242" offsety="510">
   <data encoding="csv">
    <chunk x="-16" y="-16" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -369,10 +369,16 @@
   </data>
  </layer>
  <objectgroup id="5" name="Enemy">
-  <object id="2" name="Enemy" x="151.273" y="-120.727">
+  <object id="2" name="Enemy" x="804.273" y="355.606">
    <point/>
   </object>
-  <object id="3" name="Enemy" x="151.273" y="-120.727">
+  <object id="7" name="Enemy" x="1495.94" y="342.273">
+   <point/>
+  </object>
+  <object id="8" name="Enemy" x="975.94" y="336.273">
+   <point/>
+  </object>
+  <object id="3" name="Enemy" x="395.212" y="385.349">
    <point/>
   </object>
  </objectgroup>
@@ -381,7 +387,7 @@
    <point/>
   </object>
  </objectgroup>
- <layer id="3" name="grass2" width="20" height="20">
+ <layer id="3" name="grass2" width="20" height="20" offsetx="242" offsety="510">
   <data encoding="csv">
    <chunk x="-16" y="-16" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -443,7 +449,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,25,26,26,27,
 0,0,25,27,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,38,39,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
