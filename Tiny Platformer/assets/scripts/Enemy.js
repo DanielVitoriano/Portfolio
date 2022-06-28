@@ -1,3 +1,7 @@
+let dirX;
+let speed;
+let canMove;
+
 export default class Enemy extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
         super(scene, x, y, 'Enemy_01_idle', 0)
@@ -8,13 +12,20 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
 
         this.body.setSize(20, 28, true);
         this.body.setOffset(14, 12);
+        try{
+            this.timeEvent = this.scene.time.addEvent({
+                delay: 0,
+                callback: this.Move,
+                loop: true,
+                callbackScope: this
+            });
+        }catch{
+
+        }
         
-        this.timeEvent = this.scene.time.addEvent({
-            delay: 3000,
-            callback: this.Move,
-            loop: true,
-            callbackScope: this
-        });
+        speed = 100;
+        dirX = 0;
+        canMove = true;
 
         scene.anims.create({
             key: 'enemy01_right',
@@ -31,41 +42,44 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         scene.anims.create({
             key: 'enemy01_hit',
             frames: scene.anims.generateFrameNumbers('Enemy_01_hit', { start: 0, end: 1 }),
-            frameRate: 10,
+            frameRate: 8,
             repeat: -1
+        });
+        scene.anims.create({
+            key: 'enemy01_explosion',
+            frames: scene.anims.generateFrameNumbers('death', { start: 0, end: 6 }),
+            frameRate: 12,
+            repeat: 0
         });
 
     }
 
     Move(){
-        const randNumber = Math.floor(Math.random() * 2 + 1);
-        switch(randNumber){
-            case 1:
-                this.setVelocityX(100);
+        if(canMove){
+            this.setVelocityX(dirX * speed);
+
+            if(this.body.blocked.left){
+                dirX = 1;
                 this.anims.play("enemy01_right", true);
                 this.setFlip(true, false);
-                break;
-            case 2:
-                this.setVelocityX(-100);
+            }else if(this.body.blocked.right){
+                dirX = -1;
                 this.anims.play("enemy01_right", true);
                 this.setFlip(false, false);
-                break;
-            default:
-                this.setVelocityX(0);
+            }
+            if(dirX == 0){
                 this.anims.play("enemy01_idle", true);
                 this.setFlip(false, false);
+            }
         }
-
-        this.scene.time.addEvent({
-            delay: 500,
-            callback: () => {
-                this.setVelocity(0);
-            },
-            callbackScope: this
-        });
+        
 
     }
 
-    
+    Death(){
+        canMove = false;
+        this.setVelocityX(0);
+        this.anims.play("enemy01_hit", true);
+    }
 
 }

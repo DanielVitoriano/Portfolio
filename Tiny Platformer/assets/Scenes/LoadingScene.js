@@ -40,6 +40,7 @@ export default class LoadingScene extends Phaser.Scene{
         this.load.spritesheet("Enemy_01_walk", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/walk.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_idle", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/idle.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/hit.png",{ frameWidth: 48, frameHeight:45 });
+        this.load.spritesheet("death", "../Tiny Platformer/assets/Sprites/death.png",{ frameWidth: 32, frameHeight:32 });
 
     }
     create(){

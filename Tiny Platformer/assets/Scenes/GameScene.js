@@ -1,9 +1,9 @@
 import Player from "../scripts/Player.js";
 import Enemies from "../scripts/Enemies.js";
+import Enemy from "../scripts/Enemy.js";
 
 let player;
 let cam;
-
 export default class GameScene extends Phaser.Scene{
     constructor(){
         super(
@@ -64,17 +64,41 @@ export default class GameScene extends Phaser.Scene{
         if(player.y > 400){
             this.scene.restart();
         }
+        for(let x = 0; x < this.enemiesGroup.length; x ++){
+            let a = this.enemiesGroup[x];
+            a.Move();
+        }
     }
 }
 
 function hitEnemy(player, Enemy){
-    if(player.y < Enemy.y){
-        Enemy.disableBody(true, true);
-    }
-    else{
-        console.log(player.hit);
-        player.hit = true;
-        player.anims.play('hit');
+    if(player.body.touching.down && Enemy.body.touching.up){
+        Enemy.Death();
+        player.setVelocityY(-220);
+        this.time.addEvent({
+            delay: 600,
+            callback: () => {
+                Enemy.play("enemy01_explosion", true);
+                this.time.addEvent({
+                    delay: 200,
+                    callback: () => {
+                        Enemy.disableBody(true, true);
+                        Enemy.destroy();
+                    },
+                    callbackScope: this
+                });
+            },
+            callbackScope: this
+        });
+    }else{
+        player.Hit();
+        this.time.addEvent({
+            delay: 600,
+            callback: () => {
+                this.scene.restart();
+            },
+            callbackScope: this
+        });
     }
     
     

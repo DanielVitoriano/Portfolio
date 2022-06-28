@@ -1,5 +1,5 @@
 let input;
-let hit = false;
+let canMove = true;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
@@ -12,7 +12,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.scene.add.existing(this);
         input = scene.input.keyboard.createCursorKeys();
 
-        
+        canMove = true;
 
         this.setBounce(0.2);
 
@@ -37,13 +37,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         scene.anims.create({
             key: "hit",
             frames: scene.anims.generateFrameNumbers('Player_Hit', { start: 0, end: 1 }),
-            frameRate: 8,
+            frameRate: 6,
             repeat: -1
         });
     }
     Move(){
-        const lastVelocity = this.body.velocity.clone();
-        if(hit == false){
+        if(canMove){
+            const lastVelocity = this.body.velocity.clone();
+
             if(input.left.isDown){
                 this.body.setVelocityX(-100);
                 this.anims.play("right", true);
@@ -62,6 +63,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
                 this.anims.play("up", true);
             }
         }
-        
+   
     }
+
+    Hit(){
+        console.log("entrou");
+        this.body.setVelocityX(0);
+        this.body.setVelocityY(0);
+        canMove = false;
+        this.anims.play("hit", true);
+    }
+
 }
