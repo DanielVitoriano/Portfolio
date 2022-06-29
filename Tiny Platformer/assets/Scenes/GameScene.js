@@ -1,9 +1,11 @@
 import Player from "../scripts/Player.js";
 import Enemies from "../scripts/Enemies.js";
 import Enemy from "../scripts/Enemy.js";
+import Explosion from "../scripts/Explosion.js";
 
 let player;
 let cam;
+let score;
 export default class GameScene extends Phaser.Scene{
     constructor(){
         super(
@@ -16,6 +18,14 @@ export default class GameScene extends Phaser.Scene{
         
     }
     create(){
+        //label
+        score = 0;
+        this.scoreTXT = this.add.bitmapText(10, 5, "pixelFont", "score", 24); 
+        this.scoreTXT.setTint(0xff00ff, 0xffff00, 0x00ff00, 0xff0000);//n está funcionando
+        this.scoreTXT.setScrollFactor(0);
+        this.scoreTXT.setDepth(20);
+        this.scoreTXT.text = "Score: " + score;
+        
         //background
         this.bg3 = this.add.tileSprite(0, 0, this.sys.canvas.width, this.sys.canvas.height, "bg3");
         this.bg3.setOrigin(0, 0);
@@ -55,7 +65,7 @@ export default class GameScene extends Phaser.Scene{
         this.Enemies = map.createFromObjects("Enemy", "Enemy", {});
         this.enemiesGroup = new Enemies(this.physics.world, this, [], this.Enemies);
         this.physics.add.collider(this.enemiesGroup, ground);
-        this.physics.add.collider(player, this.enemiesGroup, hitEnemy, null, this);
+        this.physics.add.overlap(player, this.enemiesGroup, hitEnemy, null, this);
     }
     update(){
         this.bg1.tilePositionX = cam.scrollX * .3;
@@ -64,8 +74,8 @@ export default class GameScene extends Phaser.Scene{
         if(player.y > 400){
             this.scene.restart();
         }
-        for(let x = 0; x < this.enemiesGroup.length; x ++){
-            let a = this.enemiesGroup[x];
+        for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
+            let a = this.enemiesGroup.getChildren()[x];
             a.Move();
         }
     }
@@ -73,17 +83,19 @@ export default class GameScene extends Phaser.Scene{
 
 function hitEnemy(player, Enemy){
     if(player.body.touching.down && Enemy.body.touching.up){
+        score += 20;
+        this.scoreTXT.text = "Score: " + score;
         Enemy.Death();
         player.setVelocityY(-220);
         this.time.addEvent({
             delay: 600,
             callback: () => {
-                Enemy.play("enemy01_explosion", true);
                 this.time.addEvent({
                     delay: 200,
                     callback: () => {
                         Enemy.disableBody(true, true);
                         Enemy.destroy();
+                        var explosion = new Explosion(this, Enemy.x, Enemy.y);
                     },
                     callbackScope: this
                 });

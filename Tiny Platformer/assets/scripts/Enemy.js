@@ -12,19 +12,19 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
 
         this.body.setSize(20, 28, true);
         this.body.setOffset(14, 12);
-        try{
-            this.timeEvent = this.scene.time.addEvent({
-                delay: 0,
-                callback: this.Move,
-                loop: true,
-                callbackScope: this
-            });
-        }catch{
-
-        }
+        //try{
+        //    this.timeEvent = this.scene.time.addEvent({
+        //        delay: 0,
+        //        callback: this.Move,
+        //        loop: true,
+        //        callbackScope: this
+        //    });
+        //}catch{
+//
+        //}
         
-        speed = 100;
-        dirX = 0;
+        speed = 60;
+        dirX = 1;
         canMove = true;
 
         scene.anims.create({
@@ -45,12 +45,6 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
             frameRate: 8,
             repeat: -1
         });
-        scene.anims.create({
-            key: 'enemy01_explosion',
-            frames: scene.anims.generateFrameNumbers('death', { start: 0, end: 6 }),
-            frameRate: 12,
-            repeat: 0
-        });
 
     }
 
@@ -58,14 +52,14 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         if(canMove){
             this.setVelocityX(dirX * speed);
 
-            if(this.body.blocked.left){
-                dirX = 1;
-                this.anims.play("enemy01_right", true);
-                this.setFlip(true, false);
-            }else if(this.body.blocked.right){
+            if(this.body.blocked.right){
                 dirX = -1;
                 this.anims.play("enemy01_right", true);
                 this.setFlip(false, false);
+            }else if(this.body.blocked.left){
+                dirX = 1;
+                this.anims.play("enemy01_right", true);
+                this.setFlip(true, false);
             }
             if(dirX == 0){
                 this.anims.play("enemy01_idle", true);

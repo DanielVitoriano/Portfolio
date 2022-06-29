@@ -28,6 +28,8 @@ export default class LoadingScene extends Phaser.Scene{
         });
 
         //recursos
+        this.load.audio("JumpSFX", "../Tiny Platformer/assets/Sounds/SFX/Player_Jump.mp3");
+        this.load.bitmapFont("pixelFont", "../Tiny Platformer/assets/font/Minecraft.png", "../Tiny Platformer/assets/font/Minecraft.xml");
         this.load.image("tiles", "../Tiny Platformer/assets/Tileset(16x16)/Tileset.png");
         this.load.tilemapTiledJSON("map", "../Tiny Platformer/assets/Tileset(16x16)/map.json");
         this.load.image("bg1", "../Tiny Platformer/assets/Background/Layer_01.png");
@@ -40,7 +42,7 @@ export default class LoadingScene extends Phaser.Scene{
         this.load.spritesheet("Enemy_01_walk", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/walk.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_idle", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/idle.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/hit.png",{ frameWidth: 48, frameHeight:45 });
-        this.load.spritesheet("death", "../Tiny Platformer/assets/Sprites/death.png",{ frameWidth: 32, frameHeight:32 });
+        this.load.spritesheet("death", "../Tiny Platformer/assets/Sprites/death.png",{ frameWidth: 35, frameHeight:35 });
 
     }
     create(){

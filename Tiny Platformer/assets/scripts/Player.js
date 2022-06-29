@@ -12,6 +12,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.scene.add.existing(this);
         input = scene.input.keyboard.createCursorKeys();
 
+        this.jumpSFX = scene.sound.add("JumpSFX");
+
         canMove = true;
 
         this.setBounce(0.2);
@@ -61,15 +63,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             if(input.up.isDown && this.body.blocked.down){
                 this.body.setVelocityY(-250);
                 this.anims.play("up", true);
+                this.jumpSFX.play();
             }
         }
-   
+
     }
 
     Hit(){
-        console.log("entrou");
+        this.y -= 10;
         this.body.setVelocityX(0);
         this.body.setVelocityY(0);
+        this.scene.physics.world.disable(this);
         canMove = false;
         this.anims.play("hit", true);
     }
