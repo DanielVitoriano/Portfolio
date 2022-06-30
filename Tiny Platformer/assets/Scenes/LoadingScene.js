@@ -24,11 +24,15 @@ export default class LoadingScene extends Phaser.Scene{
         });
 
         this.load.on('complete', () => {
-            this.scene.start("Game_Scene");
+            this.scene.start("Menu_Scene");
         });
 
         //recursos
+        this.load.image("heart", "../Tiny Platformer/assets/Sprites/heart.png");
+        this.load.image("right_Arrow", "../Tiny Platformer/assets/Sprites/right-arrow.png");
         this.load.audio("JumpSFX", "../Tiny Platformer/assets/Sounds/SFX/Player_Jump.mp3");
+        this.load.audio("selected", "../Tiny Platformer/assets/Sounds/SFX/selected.mp3");
+        this.load.audio("menu", "../Tiny Platformer/assets/Sounds/SFX/menuMove.mp3");
         this.load.bitmapFont("pixelFont", "../Tiny Platformer/assets/font/Minecraft.png", "../Tiny Platformer/assets/font/Minecraft.xml");
         this.load.image("tiles", "../Tiny Platformer/assets/Tileset(16x16)/Tileset.png");
         this.load.tilemapTiledJSON("map", "../Tiny Platformer/assets/Tileset(16x16)/map.json");

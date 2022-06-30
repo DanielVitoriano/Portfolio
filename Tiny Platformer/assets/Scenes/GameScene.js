@@ -6,6 +6,8 @@ import Explosion from "../scripts/Explosion.js";
 let player;
 let cam;
 let score;
+let lifes = [];
+var currentLifes = 3;
 export default class GameScene extends Phaser.Scene{
     constructor(){
         super(
@@ -18,13 +20,18 @@ export default class GameScene extends Phaser.Scene{
         
     }
     create(){
+        if(currentLifes <= 0) currentLifes = 3;
         //label
         score = 0;
-        this.scoreTXT = this.add.bitmapText(10, 5, "pixelFont", "score", 24); 
-        this.scoreTXT.setTint(0xff00ff, 0xffff00, 0x00ff00, 0xff0000);//n está funcionando
+        this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 1.5, 5, "pixelFont", "score", 24).setOrigin(0, 0);;
         this.scoreTXT.setScrollFactor(0);
         this.scoreTXT.setDepth(20);
         this.scoreTXT.text = "Score: " + score;
+
+        this.creatHearts();
+        //this.heart = this.add.image(10, 5, "heart").setOrigin(0, 0);
+        //this.heart.setScale(0.09);
+        //this.heart.setDepth(20);
         
         //background
         this.bg3 = this.add.tileSprite(0, 0, this.sys.canvas.width, this.sys.canvas.height, "bg3");
@@ -72,13 +79,28 @@ export default class GameScene extends Phaser.Scene{
         player.Move();
         //
         if(player.y > 400){
-            this.scene.restart();
+            currentLifes -= 1;
+            this.creatHearts();
+            if(currentLifes < 1){this.scene.start("Menu_Scene")}
+            else this.scene.restart();
         }
         for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
             let a = this.enemiesGroup.getChildren()[x];
             a.Move();
         }
     }
+
+    creatHearts(){
+        lifes.length = 0;
+        for(let x = 0; x < currentLifes; x ++){
+            lifes.push(this.add.image(10 * (x + 1), 5, "heart").setOrigin(0, 0))
+            lifes[x].setScale(0.09);
+            lifes[x].setScrollFactor(0);
+            lifes[x].setDepth(20);
+            lifes[x].x += x * 15;
+        }
+    }
+
 }
 
 function hitEnemy(player, Enemy){
@@ -103,15 +125,20 @@ function hitEnemy(player, Enemy){
             callbackScope: this
         });
     }else{
+        currentLifes -= 1;
+        this.creatHearts();
+
         player.Hit();
+        
         this.time.addEvent({
             delay: 600,
             callback: () => {
-                this.scene.restart();
+                if(currentLifes < 1){this.scene.start("Menu_Scene")}
+                else {this.scene.restart();}
             },
             callbackScope: this
         });
+        
     }
-    
     
 }
