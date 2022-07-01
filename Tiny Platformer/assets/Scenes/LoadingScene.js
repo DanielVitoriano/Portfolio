@@ -43,9 +43,18 @@ export default class LoadingScene extends Phaser.Scene{
         this.load.spritesheet("Player_Walk", "../Tiny Platformer/assets/Sprites/Player/walk.png",{ frameWidth: 35, frameHeight: 35 });
         this.load.spritesheet("Player_Hit", "../Tiny Platformer/assets/Sprites/Player/hit.png",{ frameWidth: 35, frameHeight: 35 });
         this.load.spritesheet("Player_Jump", "../Tiny Platformer/assets/Sprites/Player/jump.png",{ frameWidth: 35, frameHeight: 35 });
+        //enemy 1
         this.load.spritesheet("Enemy_01_walk", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/walk.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_idle", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/idle.png",{ frameWidth: 48, frameHeight:45 });
         this.load.spritesheet("Enemy_01_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_01/hit.png",{ frameWidth: 48, frameHeight:45 });
+        //enemy 2
+        this.load.spritesheet("Enemy_02_walk", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_02/walk.png",{ frameWidth: 48, frameHeight:42 });
+        this.load.spritesheet("Enemy_02_idle", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_02/idle.png",{ frameWidth: 48, frameHeight:42 });
+        this.load.spritesheet("Enemy_02_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_02/hit.png",{ frameWidth: 48, frameHeight:42 });
+        //enemy 3
+        this.load.spritesheet("Enemy_03_fly", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_03/fly.png",{ frameWidth: 35, frameHeight:32 });
+        this.load.spritesheet("Enemy_03_hit", "../Tiny Platformer/assets/Sprites/Enemies/Enemy_03/hit.png",{ frameWidth: 35, frameHeight:32 });
+        //
         this.load.spritesheet("death", "../Tiny Platformer/assets/Sprites/death.png",{ frameWidth: 35, frameHeight:35 });
 
     }

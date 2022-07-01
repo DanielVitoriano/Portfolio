@@ -1,7 +1,8 @@
 import Player from "../scripts/Player.js";
 import Enemies from "../scripts/Enemies.js";
-import Enemy from "../scripts/Enemy.js";
-import Explosion from "../scripts/Explosion.js";
+import Enemy1 from "../scripts/Enemy.js";
+import Enemy2 from "../scripts/Enemy2.js";
+import Enemy3 from "../scripts/Enemy3.js";
 
 let player;
 let cam;
@@ -29,9 +30,6 @@ export default class GameScene extends Phaser.Scene{
         this.scoreTXT.text = "Score: " + score;
 
         this.creatHearts();
-        //this.heart = this.add.image(10, 5, "heart").setOrigin(0, 0);
-        //this.heart.setScale(0.09);
-        //this.heart.setDepth(20);
         
         //background
         this.bg3 = this.add.tileSprite(0, 0, this.sys.canvas.width, this.sys.canvas.height, "bg3");
@@ -50,9 +48,11 @@ export default class GameScene extends Phaser.Scene{
         const map = this.make.tilemap({key: "map"});
         const tileset = map.addTilesetImage("tileset", "tiles");
 
-        const grass = map.createLayer("grass", tileset, 0, 250);
-        const ground = map.createLayer("ground", tileset, 0, 250);
-        const grass2 = map.createLayer("grass2", tileset, 0, 250);
+        const grass = map.createLayer("grass", tileset, 0, 0);
+        const ground = map.createLayer("ground", tileset, 0, 0);
+        const grass2 = map.createLayer("grass2", tileset, 0, 0);
+        const EnemyBords = map.createLayer("EnemyBords", tileset, 0, 0);
+        EnemyBords.visible = false;
 
         //Jogador
         const spawnPlayer = map.findObject("Player", obj => obj.name === "PlayerSpawn");
@@ -60,6 +60,7 @@ export default class GameScene extends Phaser.Scene{
         
         //colisores
         ground.setCollisionByProperty({"Collider": true});
+        EnemyBords.setCollisionByProperty({"Collider": true});
         this.physics.add.collider(player, ground);
 
         grass2.setDepth(10);
@@ -68,11 +69,25 @@ export default class GameScene extends Phaser.Scene{
         cam.startFollow(player);
         cam.setBounds(0, 0, ground.width, map.heightInPixels);
 
-        //inimigos
+        //inimigos 1
         this.Enemies = map.createFromObjects("Enemy", "Enemy", {});
-        this.enemiesGroup = new Enemies(this.physics.world, this, [], this.Enemies);
+        this.enemiesGroup = new Enemies(Enemy1, this.physics.world, this, [], this.Enemies);
         this.physics.add.collider(this.enemiesGroup, ground);
+        this.physics.add.collider(this.enemiesGroup, EnemyBords);
         this.physics.add.overlap(player, this.enemiesGroup, hitEnemy, null, this);
+
+        //inimigos 2
+        this.Enemies2 = map.createFromObjects("Enemy2", "Enemy2", {});
+        this.enemiesGroup2 = new Enemies(Enemy2, this.physics.world, this, [], this.Enemies2);
+        this.physics.add.collider(this.enemiesGroup2, ground);
+        this.physics.add.collider(this.enemiesGroup2, EnemyBords);
+        this.physics.add.overlap(player, this.enemiesGroup2, hitEnemy, null, this);
+
+        //inimigos 3
+        this.Enemies3 = map.createFromObjects("Enemy3", "Enemy3", {});
+        this.enemiesGroup3 = new Enemies(Enemy3, this.physics.world, this, [], this.Enemies3);
+        this.physics.add.collider(this.enemiesGroup3, EnemyBords);
+        this.physics.add.overlap(player, this.enemiesGroup3, hitEnemy, null, this);
     }
     update(){
         this.bg1.tilePositionX = cam.scrollX * .3;
@@ -87,6 +102,15 @@ export default class GameScene extends Phaser.Scene{
         for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
             let a = this.enemiesGroup.getChildren()[x];
             a.Move();
+        }
+        for(let x = 0; x < this.enemiesGroup2.getChildren().length; x ++){
+            let a = this.enemiesGroup2.getChildren()[x];
+            a.Move();
+        }
+        for(let x = 0; x < this.enemiesGroup3.getChildren().length; x ++){
+            let a = this.enemiesGroup3.getChildren()[x];
+            a.Move();
+            a.body.setAllowGravity(false);
         }
     }
 
@@ -109,21 +133,7 @@ function hitEnemy(player, Enemy){
         this.scoreTXT.text = "Score: " + score;
         Enemy.Death();
         player.setVelocityY(-220);
-        this.time.addEvent({
-            delay: 600,
-            callback: () => {
-                this.time.addEvent({
-                    delay: 200,
-                    callback: () => {
-                        Enemy.disableBody(true, true);
-                        Enemy.destroy();
-                        var explosion = new Explosion(this, Enemy.x, Enemy.y);
-                    },
-                    callbackScope: this
-                });
-            },
-            callbackScope: this
-        });
+        
     }else{
         currentLifes -= 1;
         this.creatHearts();
