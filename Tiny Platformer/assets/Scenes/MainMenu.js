@@ -25,21 +25,24 @@ export default class MainMenu extends Phaser.Scene{
 
         this.arrow = this.add.image(0, 0, "right_Arrow");
         this.arrow.setScale(0.015);
+        var tween = this.tweens.add({
+            targets: this.arrow,
+            alpha: 0,
+            ease: 'Power1',
+            duration: 300,
+            yoyo: true,
+            repeat: -1
+        });
 
-        this.txt_New_Game = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 3, "pixelFont", "Novo Jogo", 32, 1).setOrigin(0.5);; 
-        this.txt_New_Game.setInteractive();
-        this.txt_New_Game.on("pointerdown", () => this.scene.start("Game_Scene"));
+        this.txt_New_Game = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 3, "pixelFont", "Novo Jogo", 32, 1).setOrigin(0.5);
 
-        this.txt_Continue = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "pixelFont", "Continuar", 32).setOrigin(0.5);;
-        //this.txt_Continue.on("pointerdown", () => this.scene.start("Game_Scene"));
+        this.txt_Continue = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 2, "pixelFont", "Continuar", 32).setOrigin(0.5);
 
-        this.txt_Config = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 1.5, "pixelFont", "Configuracoes", 32).setOrigin(0.5);;
-        this.txt_Config.setInteractive();
-        //this.txt_Config.on("pointerdown", () => this.scene.start("Game_Scene"));
+        this.txt_Machine= this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 1.5, "pixelFont", "[Estados de Maquina]", 32).setOrigin(0.5);
 
         arrayOpt.push(this.txt_New_Game);
         arrayOpt.push(this.txt_Continue);
-        arrayOpt.push(this.txt_Config);
+        arrayOpt.push(this.txt_Machine);
 
     }
     update(){
@@ -53,13 +56,15 @@ export default class MainMenu extends Phaser.Scene{
             enter.isDown = false;
             switch (selected){
                 case 0:
-                    this.scene.start("Game_Scene")
+                    localStorage.setItem("[TP]_MenuOPT", 1);
+                    this.scene.start("Game_Scene");
                     break;
                 case 1:
-                    console.log("por enquanto n faz nada");
+                    localStorage.setItem("[TP]_MenuOPT", 2);
+                    this.scene.start("Game_Scene");
                     break;
                 case 2:
-                    console.log("por enquanto n faz nada");
+                    this.scene.start("Machine_States");
                     break;
             }
         }
@@ -82,7 +87,7 @@ export default class MainMenu extends Phaser.Scene{
         if(arrayOpt[selected] == null){
             arrayOpt.push(this.txt_New_Game);
             arrayOpt.push(this.txt_Continue);
-            arrayOpt.push(this.txt_Config);
+            arrayOpt.push(this.txt_Machine);
         }
         this.arrow.x = arrayOpt[selected].getTextBounds(true).global.x - 25;
         this.arrow.y = arrayOpt[selected].y - 5;

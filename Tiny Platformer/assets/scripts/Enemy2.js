@@ -13,6 +13,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
 
         this.body.setSize(20, 26, true);
         this.body.setOffset(14, 11);
+
+        this.deathSFX = scene.sound.add("killEnemy");
         
         speed = 60;
         dirX = 0
@@ -65,6 +67,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         this.canMove = false;
         this.setVelocityX(0);
         this.anims.play("enemy02_hit", true);
+        this.deathSFX.play();
 
         this.scene.time.addEvent({
             delay: 600,

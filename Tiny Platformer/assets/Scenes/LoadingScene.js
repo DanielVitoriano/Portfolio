@@ -32,6 +32,7 @@ export default class LoadingScene extends Phaser.Scene{
         this.load.image("right_Arrow", "../Tiny Platformer/assets/Sprites/right-arrow.png");
         this.load.audio("JumpSFX", "../Tiny Platformer/assets/Sounds/SFX/Player_Jump.mp3");
         this.load.audio("selected", "../Tiny Platformer/assets/Sounds/SFX/selected.mp3");
+        this.load.audio("killEnemy", "../Tiny Platformer/assets/Sounds/SFX/kill_Enemy.mp3");
         this.load.audio("menu", "../Tiny Platformer/assets/Sounds/SFX/menuMove.mp3");
         this.load.bitmapFont("pixelFont", "../Tiny Platformer/assets/font/Minecraft.png", "../Tiny Platformer/assets/font/Minecraft.xml");
         this.load.image("tiles", "../Tiny Platformer/assets/Tileset(16x16)/Tileset.png");

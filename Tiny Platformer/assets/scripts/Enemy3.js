@@ -5,7 +5,7 @@ let speed;
 
 export default class Enemy extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
-        super(scene, x, y, 'Enemy_03_fly', 0)
+        super(scene, x, y, "Enemy_03_fly", 0)
         
         this.scene = scene;
         this.scene.physics.world.enable(this);
@@ -15,23 +15,28 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         this.body.setOffset(14, 12);
         this.body.setGravity(0, 0);
         this.body.setAllowGravity(false);
+
+        this.deathSFX = scene.sound.add("killEnemy");
         
-        speed = 60;
-        dirX = -1;
         this.canMove = true;
 
         this.scene.anims.create({
-            key: 'enemy03_right',
-            frames: scene.anims.generateFrameNumbers('Enemy_03_fly', { start: 0, end: 2 }),
+            key: "enemy03_right",
+            frames: scene.anims.generateFrameNumbers("Enemy_03_fly", { start: 0, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
         this.scene.anims.create({
-            key: 'enemy03_hit',
-            frames: scene.anims.generateFrameNumbers('Enemy_03_hit', { start: 0, end: 0 }),
+            key: "enemy03_hit",
+            frames: scene.anims.generateFrameNumbers("Enemy_03_hit", { start: 0, end: 0 }),
             frameRate: 8,
             repeat: -1
         });
+
+        speed = 60;
+        dirX = -1;
+        this.anims.play("enemy03_right", true);
+        this.setFlip(false, false);
 
     }
 
@@ -57,6 +62,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         this.canMove = false;
         this.setVelocityX(0);
         this.anims.play("enemy03_hit", true);
+        this.deathSFX.play();
 
         this.scene.time.addEvent({
             delay: 600,
@@ -75,5 +81,4 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
             callbackScope: this
         });
     }
-
 }

@@ -21,9 +21,20 @@ export default class GameScene extends Phaser.Scene{
         
     }
     create(){
+        //novo jogo
+        if(localStorage.getItem("[TP]_MenuOPT") == 1){
+            localStorage.setItem('[TP]_score', 0);
+            score = 0;
+            localStorage.setItem("[TP]_MenuOPT", 1);
+        }//continuar
+        else if(localStorage.getItem("[TP]_MenuOPT") == 2){
+            score = parseInt(localStorage.getItem('[TP]_score'));
+            currentLifes = parseInt(localStorage.getItem("[TP]_current_lifes"));
+            localStorage.setItem("[TP]_MenuOPT", 1);
+        }
+        
         if(currentLifes <= 0) currentLifes = 3;
         //label
-        score = 0;
         this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 1.5, 5, "pixelFont", "score", 24).setOrigin(0, 0);;
         this.scoreTXT.setScrollFactor(0);
         this.scoreTXT.setDepth(20);
@@ -130,13 +141,16 @@ export default class GameScene extends Phaser.Scene{
 function hitEnemy(player, Enemy){
     if(player.body.touching.down && Enemy.body.touching.up){
         score += 20;
+        localStorage.setItem('[TP]_score', score);
         this.scoreTXT.text = "Score: " + score;
         Enemy.Death();
         player.setVelocityY(-220);
         
     }else{
+        score = 0;
         currentLifes -= 1;
         this.creatHearts();
+        localStorage.setItem('[TP]_current_lifes', currentLifes);
 
         player.Hit();
         
