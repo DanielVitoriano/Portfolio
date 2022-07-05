@@ -5,10 +5,15 @@ import MachineStates from "../Scenes/MachineStates.js";
 
 const config = {
     type: Phaser.AUTO,
-    width: 620,
-    height: 400,
     backgroundColor: '#000000',
     parent: "GAME",
+    scale: {
+        mode: Phaser.Scale.FIT,
+        parent: 'phaser-example',
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 620,
+        height: 400
+    },
     physics: {
         default: "arcade",
         arcade: {

@@ -12,9 +12,31 @@ export default class MainMenu extends Phaser.Scene{
         );
     }
     preload(){
-        
+        this.load.image('fullscren', "../Tiny Platformer/assets/Sprites/54431.png")
     }
     create(){
+
+        var button = this.add.image(this.sys.canvas.width / 2, this.sys.canvas.height / 6, 'fullscren', 0).setOrigin(.5, 0).setInteractive();
+
+        button.on('pointerup', function () {
+
+            if (this.scale.isFullscreen)
+            {
+                button.setFrame(0);
+
+                this.scale.stopFullscreen();
+            }
+            else
+            {
+                button.setFrame(1);
+
+                this.scale.startFullscreen();
+            }
+
+        }, this);
+        button.setDepth(20);
+        button.setScale(.02);
+
         this.selectedSFX = this.sound.add("selected");
         this.moveSFX = this.sound.add("menu");
 
