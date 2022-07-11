@@ -13,13 +13,59 @@ export default class StatesMachine extends Phaser.Scene{
         this.load.image("this.logo ", "../Tiny Platformer/assets/Sprites/heart.png")
     }
     create(){
-        this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 1.5, 5, "pixelFont", "Utilize o mouse para mover o \ncoração e atrair o personagem", 24).setOrigin(0, 0);;
+        var codeRain = {
+            width: 50,
+            height: 40,
+            cellWidth: 16,
+            cellHeight: 16,
+            getPoints: function (quantity)
+            {
+                var cols = (new Array(codeRain.width)).fill(0);
+                var lastCol = cols.length - 1;
+                var Between = Phaser.Math.Between;
+                var RND = Phaser.Math.RND;
+                var points = [];
+    
+                for (var i = 0; i < quantity; i++)
+                {
+                    var col = Between(0, lastCol);
+                    var row = (cols[col] += 1);
+    
+                    if (RND.frac() < 0.01)
+                    {
+                        row *= RND.frac();
+                    }
+    
+                    row %= codeRain.height;
+                    row |= 0;
+    
+                    points[i] = new Phaser.Math.Vector2(16 * col, 16 * row);
+                }
+    
+                return points;
+            }
+        };
+        this.add.particles('pixelFont').createEmitter({
+            alpha: { start: 1, end: 0.25, ease: 'Expo.easeOut' },
+            angle: 0,
+            blendMode: 'ADD',
+            emitZone: { source: codeRain, type: 'edge', quantity: 2000 },
+            //frame: Phaser.Utils.Array.NumberArray(8, 58),
+            frequency: 100,
+            lifespan: 6000,
+            quantity: 25,
+            scale: -0.5,
+            tint: 0x0066ff00
+        });
+        this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 1.5, 5, "pixelFont", "Utilize o mouse para mover o \ncoração e atrair o personagem", 24).setOrigin(0, 0);
+        this.modo = this.add.bitmapText(this.sys.canvas.height / 3, 5, "pixelFont", "modo: ", 16).setOrigin(0, 0);
+        this.modo.setDepth(10);
       
         this.scoreTXT.setDepth(20);
         this.scoreTXT.setTint(0xffffff);
 
 
-        this.inputMouse =this.input;
+        this.inputMouse = this.input;
         this.logo  = this.physics.add.image(400, 100, 'this.logo ');
 
         this.logo .setVelocity(100, 200);
@@ -50,25 +96,25 @@ export default class StatesMachine extends Phaser.Scene{
         this.boss.body.setOffset(16, 12);
 
         this.anims.create({
-            key: "idle",
+            key: "boss_idle",
             frames: this.anims.generateFrameNumbers("pers", { start: 0, end: 5 }),
             frameRate: 6,
             repeat: -1
         });
         this.anims.create({
-            key: "run",
+            key: "boss_run",
             frames: this.anims.generateFrameNumbers("pers", { start: 6, end: 11 }),
             frameRate: 10,
             repeat: -1
         });
         this.anims.create({
-            key: "jump",
+            key: "boss_jump",
             frames: this.anims.generateFrameNumbers("pers", { start: 42, end: 47 }),
             frameRate: 10,
             repeat: 0
         });
 
-        this.boss.anims.play("idle", true);
+        this.boss.anims.play("boss_idle", true);
 
         this.time.addEvent({
             delay: 5000,
@@ -88,8 +134,12 @@ export default class StatesMachine extends Phaser.Scene{
         this.physics.add.collider(this.logo, ground);
     }
     update(){
+        this.modo.text = "modo: " + this.state;
+        this.modo.x = this.boss.x - 15;
+        this.modo.y = this.boss.y - 35;
         if(this.boss.x - this.logo.x < 110 && this.boss.x - this.logo.x > -110) {
             following = true;
+            this.state = characterStates[2];
         }
         else {
             following = false;
@@ -104,46 +154,50 @@ export default class StatesMachine extends Phaser.Scene{
         if(following){
             if(this.boss.x < target.x && this.boss.body.blocked.down){ //direita
                 this.dir = 1;
-                this.boss.anims.play("run", true);
+                this.boss.anims.play("boss_run", true);
                 this.boss.setFlip(false, false);
                 this.boss.body.setOffset(16, 12);
             }else if(this.boss.x > target.x && this.boss.body.blocked.down){ //esquerda
                 this.dir = -1;
-                this.boss.anims.play("run", true);
+                this.boss.anims.play("boss_run", true);
                 this.boss.setFlip(true, false);
                 this.boss.body.setOffset(32, 12);
             }
+            if(this.boss.x - target.x < 5 && this.boss.x - target.x > -5){
+                this.boss.anims.play("boss_idle", true);
+                this.dir = 0;
+            }
             if(this.boss.body.blocked.right || this.boss.body.blocked.left && this.boss.body.blocked.down){
                 if(this.boss.body.blocked.down) this.boss.body.setVelocityY(-220);
-                this.boss.anims.play("jump");
+                this.boss.anims.play("boss_jump");
             }
             this.boss.body.setVelocityX(this.dir * 90);
         }
     }
 
     Move(){
-        //idle
+        //boss_idle
         if(this.state == characterStates[0]){
-            this.boss.anims.play("idle", true);
+            this.boss.anims.play("boss_idle", true);
             this.dir = 0;
         }
         //patrulha
         else if(this.state == characterStates[1]){
             if(this.dir == 0){
                 this.dir = 1;
-                this.boss.anims.play("run", true);
+                this.boss.anims.play("boss_run", true);
                 this.boss.setFlip(false, false);
                 this.boss.body.setOffset(16, 12);
             }
             if(this.boss.body.blocked.left){
                 this.dir = 1;
-                this.boss.anims.play("run", true);
+                this.boss.anims.play("boss_run", true);
                 this.boss.setFlip(false, false);
                 this.boss.body.setOffset(16, 12);
             }
             else if(this.boss.body.blocked.right){
                 this.dir = -1;
-                this.boss.anims.play("run", true);
+                this.boss.anims.play("boss_run", true);
                 this.boss.setFlip(true, false);
                 this.boss.body.setOffset(32, 12);
             }

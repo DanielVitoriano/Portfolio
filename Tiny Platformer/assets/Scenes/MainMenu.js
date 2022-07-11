@@ -62,9 +62,12 @@ export default class MainMenu extends Phaser.Scene{
 
         this.txt_Machine= this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 1.5, "pixelFont", "[Estados de Maquina]", 32).setOrigin(0.5);
 
+        this.txt_confg = this.add.bitmapText(this.sys.canvas.width / 2, this.sys.canvas.height / 1.2, "pixelFont", "Configuracoes", 32).setOrigin(0.5);
+
         arrayOpt.push(this.txt_New_Game);
         arrayOpt.push(this.txt_Continue);
         arrayOpt.push(this.txt_Machine);
+        arrayOpt.push(this.txt_confg);
 
     }
     update(){
@@ -87,6 +90,9 @@ export default class MainMenu extends Phaser.Scene{
                     break;
                 case 2:
                     this.scene.start("Machine_States");
+                    break;
+                case 3:
+                    this.scene.start("settings_Scene");
                     break;
             }
         }

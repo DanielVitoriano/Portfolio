@@ -2,6 +2,7 @@ import LoadingScene from "../Scenes/LoadingScene.js";
 import MainMenuScene from "../Scenes/MainMenu.js";
 import GameScene from "../Scenes/GameScene.js";
 import MachineStates from "../Scenes/MachineStates.js";
+import settingsScene from "../Scenes/settingsMenu.js";
 
 const config = {
     type: Phaser.AUTO,
@@ -25,7 +26,8 @@ const config = {
         LoadingScene,
         MainMenuScene,
         GameScene,
-        MachineStates
+        MachineStates,
+        settingsScene
     ]
 };
 

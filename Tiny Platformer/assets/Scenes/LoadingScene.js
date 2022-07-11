@@ -28,6 +28,7 @@ export default class LoadingScene extends Phaser.Scene{
         });
 
         //recursos
+        this.load.image("soundBar", "../Tiny Platformer/assets/Sprites/soundBar.png");
         this.load.image("heart", "../Tiny Platformer/assets/Sprites/heart.png");
         this.load.image("right_Arrow", "../Tiny Platformer/assets/Sprites/right-arrow.png");
         this.load.audio("JumpSFX", "../Tiny Platformer/assets/Sounds/SFX/Player_Jump.mp3");

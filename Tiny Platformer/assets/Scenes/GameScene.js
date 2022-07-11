@@ -128,11 +128,18 @@ export default class GameScene extends Phaser.Scene{
     creatHearts(){
         lifes.length = 0;
         for(let x = 0; x < currentLifes; x ++){
-            lifes.push(this.add.image(10 * (x + 1), 5, "heart").setOrigin(0, 0))
+            lifes.push(this.add.image(0, 0, "heart").setOrigin(0, 0))
             lifes[x].setScale(0.09);
             lifes[x].setScrollFactor(0);
             lifes[x].setDepth(20);
-            lifes[x].x += x * 15;
+            //lifes[x].x += x * 15;
+            Phaser.Actions.GridAlign(lifes, {
+                width: 6,
+                cellWidth: 132,
+                cellHeight: 200,
+                x: 68,
+                y: 5
+            });
         }
     }
 
