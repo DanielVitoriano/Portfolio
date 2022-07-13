@@ -22,6 +22,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.dieSFX = scene.sound.add("playerDie");
         this.playerWalkSFX = scene.sound.add("playerWalk");
+        
+        this.powerUpSFX = scene.sound.add("powerUp");
 
         this.lifes = 3;
 
@@ -66,6 +68,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         if(!this.hited){
             this.hited = true;
             this.lifes --;
+            this.scene.lifesTXT.text = "" + this.lifes;
             this.dieSFX.play();
         
             if(this.lifes <= 0){
@@ -174,6 +177,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             default:
                 break;
         }
+        this.powerUpSFX.play();
     }
 
 

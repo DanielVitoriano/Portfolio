@@ -30,6 +30,9 @@ export default class LoadingScene extends Phaser.Scene{
         this.load.plugin('rexvirtualjoystickplugin', url, true);
         //carregamentos:
 
+        //font
+        this.load.bitmapFont("bombermanFont", "../Bomberman/fonts/Bomberman.png", "../Bomberman/fonts/Bomberman.xml");
+
         //menu
         this.load.image("menuBG", "../Bomberman/sprites/menuBG.png");
 
