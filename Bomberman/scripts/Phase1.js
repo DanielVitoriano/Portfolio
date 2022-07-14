@@ -5,6 +5,7 @@ import Player from "./Player.js";
 //global vars
 let dir = "";
 var map;
+var time = 180;
 
 export default class Phase1 extends Phaser.Scene{
     constructor(){
@@ -20,19 +21,24 @@ export default class Phase1 extends Phaser.Scene{
     }
 
     create(){
+        time = 300;
 
-        this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 2, 5, "bombermanFont", "score", 24).setOrigin(0, 0);;
+        this.gameOverTXT = this.add.bitmapText(this.sys.canvas.height / 2.6, this.sys.canvas.width / 3, "bombermanFont", "", 48).setOrigin(0, 0);
+
+        this.timedEvent = this.time.addEvent({ delay: 1000, callback: function(){time --; time}, callbackScope: this, repeat: -1, startAt: 0 });
+        this.scoreTXT = this.add.bitmapText(this.sys.canvas.height / 2, 5, "bombermanFont", "score", 24).setOrigin(0, 0);
         this.scoreTXT.setScrollFactor(0);
         this.scoreTXT.setDepth(20);
-        this.scoreTXT.text = "Score: ";
+        this.scoreTXT.text = "Tempo: " + time;
 
-        this.lifesTXT = this.add.bitmapText(this.sys.canvas.height / 3, 5, "bombermanFont", "", 24).setOrigin(0, 0);;
+        this.lifesTXT = this.add.bitmapText(this.sys.canvas.height / 3, 5, "bombermanFont", "", 24).setOrigin(0, 0);
         this.lifesTXT.setScrollFactor(0);
         this.lifesTXT.setDepth(20);
         this.lifesTXT.text = "";
         
         this.musicTheme = this.sound.add("theme");
         this.musicTheme.play();
+        this.sound.stopByKey('title');
 
         this.levelStartSFX = this.sound.add("levelStart");
         this.levelStartSFX.loop = false;
@@ -49,7 +55,7 @@ export default class Phase1 extends Phaser.Scene{
         this.blocks.setDepth(1);
 
         const spawnPlayer = map.findObject("Player", obj => obj.name === "PlayerSpawnPoint");
-        this.player = new Player(80, this, spawnPlayer.x, spawnPlayer.y, "player_White_Walk", "player_White_Death"); // em breve ele vai poder escolher seu personagem
+        this.player = new Player(80, this, spawnPlayer.x, spawnPlayer.y, localStorage.getItem("[BM]_player_sprite_walk"), localStorage.getItem("[BM]_player_sprite_death")); // em breve ele vai poder escolher seu personagem
         this.player.setDepth(2)
         this.lifesTXT.text = "" + this.player.lifes;
         
@@ -88,6 +94,7 @@ export default class Phase1 extends Phaser.Scene{
 
     update(){
         this.enemy.Move(this.bricks, this.blocks);
+        this.scoreTXT.setText('Tempo: ' + (time - this.timedEvent.getProgress().toString().substr(0, 4)).toFixed(0));
     }
 
     dumpJoyStickState() {
@@ -114,6 +121,19 @@ export default class Phase1 extends Phaser.Scene{
         }
         //this.text.setText(s);
         this.player.Move(dir);
+    }
+
+    GameOver(){
+        var tween = this.tweens.add({
+            targets: this.gameOverTXT,
+            alpha: 0,
+            ease: 'GameOver',
+            duration: 300,
+            yoyo: true,
+            repeat: -1
+        });
+        this.gameOverTXT.text = "Se Lascou!";
+        this.gameOverTXT.setDepth(20);
     }
 
     getMap(){

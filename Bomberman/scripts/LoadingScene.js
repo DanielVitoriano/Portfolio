@@ -22,7 +22,7 @@ export default class LoadingScene extends Phaser.Scene{
         });
 
         this.load.on('complete', () => {
-            this.scene.start("Phase1_Scene");
+            this.scene.start("Menu_Scene");
         });
         var url;
   

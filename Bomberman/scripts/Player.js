@@ -9,7 +9,10 @@ let bombsPlanted = 0;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(speed, scene, x, y, sprite_sheet, sprite_sheet_death){
-        super(scene, x, y, sprite_sheet, 0);
+        super(scene, x, y, sprite_sheet, 4);
+
+        this.spriteWalk = sprite_sheet;
+        this.spriteDeath = sprite_sheet_death;
 
         this.scene = scene;
         this.scene.physics.world.enable(this);
@@ -22,6 +25,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.dieSFX = scene.sound.add("playerDie");
         this.playerWalkSFX = scene.sound.add("playerWalk");
+        this.loseSFX = this.scene.sound.add("gameOver");
         
         this.powerUpSFX = scene.sound.add("powerUp");
 
@@ -29,25 +33,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         scene.anims.create({
             key: 'Player_Walk_Up',
-            frames: scene.anims.generateFrameNumbers(sprite_sheet, { start: 0, end: 3 }),
+            frames: scene.anims.generateFrameNumbers(this.spriteWalk, { start: 0, end: 3 }),
             frameRate: 8,
             repeat: -1
         });
         scene.anims.create({
             key: 'Player_Walk_Down',
-            frames: scene.anims.generateFrameNumbers(sprite_sheet, { start: 4, end: 7 }),
+            frames: scene.anims.generateFrameNumbers(this.spriteWalk, { start: 4, end: 7 }),
             frameRate: 8,
             repeat: -1
         });
         scene.anims.create({
             key: 'Player_Walk_Vertical',
-            frames: scene.anims.generateFrameNumbers(sprite_sheet, { start: 8, end: 11 }),
+            frames: scene.anims.generateFrameNumbers(this.spriteWalk, { start: 8, end: 11 }),
             frameRate: 8,
             repeat: -1
         });
         scene.anims.create({
             key: 'Player_Death',
-            frames: scene.anims.generateFrameNumbers(sprite_sheet_death, { start: 0, end: 5 }),
+            frames: scene.anims.generateFrameNumbers(this.spriteDeath, { start: 0, end: 5 }),
             frameRate: 5,
             repeat: 0
         });
@@ -57,7 +61,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     }
 
     TheBombWasPlanted(scene){
-        if(bombsPlanted < maxBomb){
+        if(bombsPlanted < maxBomb && !this.hited){
             let pos = scene.ground.getTileAtWorldXY(this.x, this.y);
             let bomb = new Bomb(3000, scene, pos.x * 16 + 7, pos.y * 16 + 7, pumpForce);
             bombsPlanted ++;
@@ -66,21 +70,34 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
     Hit(){
         if(!this.hited){
+            this.loseSFX.on("complete", function(){return true});
+            this.body.setVelocity(0, 0)
             this.hited = true;
             this.lifes --;
             this.scene.lifesTXT.text = "" + this.lifes;
             this.dieSFX.play();
-        
-            if(this.lifes <= 0){
-                this.scene.scene.start("Menu_Scene")
-                return;
-            }
 
             this.anims.play("Player_Death", true);
             this.on('animationcomplete', function(){
-                this.hited = false;
+                if(this.lifes <= 0){
+                    this.scene.GameOver();
+                    this.scene.sound.stopByKey('theme');
+                    this.loseSFX.play();
+                    this.teste = false;
+                    this.loseSFX.on("complete", function(){this.scene.scene.start("Menu_Scene")}, this);   
+                    return;
+                }
                 this.play("Player_Walk_Down", true);
+                this.hited = false;
                 this.Move("default");
+                var tween = this.scene.tweens.add({
+                    targets: this,
+                    alpha: 0,
+                    ease: 'PosDeath',
+                    duration: 150,
+                    yoyo: true,
+                    repeat: 4
+                });
                 this.setPosition(this.Xorigin, this.Yorigin);
             })
 

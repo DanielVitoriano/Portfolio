@@ -33,6 +33,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite{
         this.scene.time.addEvent({
             delay: time,
             callback: () => {
+                this.body.setVelocity(0, 0);
                 this.setScale(1.1);
                 this.anims.play("bomb_explosion", true);
                 this.bombExplosionSFX.play();
