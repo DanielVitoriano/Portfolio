@@ -7,6 +7,9 @@ export default class Explosion extends Phaser.Physics.Arcade.Sprite{
         scene.physics.add.overlap(this, scene.player, function(self, player){
             player.Hit();
         });
+        scene.physics.add.overlap(this, scene.enemiesGroup, function(self, enemy){
+            enemy.Hit();
+        });
         this.body.setSize(12, 12, true);
 
         //scene.physics.add.overlap(this, scene.bricks, function(self, brick){

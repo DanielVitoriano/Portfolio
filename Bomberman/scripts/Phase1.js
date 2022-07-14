@@ -1,6 +1,7 @@
 //imports
 import Enemy from "./Enemy.js";
 import Player from "./Player.js";
+import Enemies from "./Enemies.js";
 
 //global vars
 let dir = "";
@@ -88,15 +89,17 @@ export default class Phase1 extends Phaser.Scene{
         this.physics.add.collider(this.player, this.blocks);
         this.physics.add.collider(this.player, this.bricks);
 
-        this.enemy = new Enemy(this, this.player.x + (11 * 16), this.player.y + 16);
-        this.physics.add.collider(this.enemy, this.blocks);
-        this.physics.add.collider(this.enemy, this.bricks);
+        this.Enemies = map.createFromObjects("Enemies", "Enemy", {});
+        this.enemiesGroup = new Enemies(this.physics.world, this, [], this.Enemies);
 
     }
     
 
     update(){
-        this.enemy.Move(this.bricks, this.blocks);
+        for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
+            let a = this.enemiesGroup.getChildren()[x];
+            a.Move(this.bricks, this.blocks);
+        }
         this.scoreTXT.setText('Tempo: ' + (time - this.timedEvent.getProgress().toString().substr(0, 4)).toFixed(0));
     }
 

@@ -14,6 +14,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.spriteWalk = sprite_sheet;
         this.spriteDeath = sprite_sheet_death;
 
+        this.setOrigin(.5, .7)
         this.scene = scene;
         this.scene.physics.world.enable(this);
         this.body.setSize(14, 14, true);

@@ -7,7 +7,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this);
         scene.physics.world.enable(this);
         this.bombExplosionSFX = scene.sound.add("bombExplosionSFX");
-        this.setDepth(2);
+        this.setDepth(1);
         this.body.setSize(14, 14, true);
         scene.physics.add.collider(scene.bricks, this);
         scene.physics.add.collider(scene.blocks, this);
