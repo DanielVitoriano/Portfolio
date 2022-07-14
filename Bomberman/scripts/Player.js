@@ -74,7 +74,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             this.body.setVelocity(0, 0)
             this.hited = true;
             this.lifes --;
-            this.scene.lifesTXT.text = "" + this.lifes;
+            this.scene.lifesTXT.text = "x" + this.lifes;
             this.dieSFX.play();
 
             this.anims.play("Player_Death", true);

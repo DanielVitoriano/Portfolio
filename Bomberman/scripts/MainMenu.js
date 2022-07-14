@@ -14,6 +14,27 @@ export default class MainMenu extends Phaser.Scene{
         
     }
     create(){
+        
+        var button = this.add.image(this.sys.canvas.width / 2, 5, 'fullscreen', 0).setOrigin(.5, 0).setInteractive().setScale(.02);
+        button.setDepth(20);
+
+        button.on('pointerup', function () {
+            console
+            if (this.scale.isFullscreen)
+            {
+                button.setFrame(0);
+
+                this.scale.stopFullscreen();
+            }
+            else
+            {
+                button.setFrame(1);
+
+                this.scale.startFullscreen();
+            }
+
+        }, this);
+
         this.titleSFX = this.sound.add("title");
         this.titleSFX.loop = true;
         this.titleSFX.play();

@@ -31,10 +31,13 @@ export default class Phase1 extends Phaser.Scene{
         this.scoreTXT.setDepth(20);
         this.scoreTXT.text = "Tempo: " + time;
 
-        this.lifesTXT = this.add.bitmapText(this.sys.canvas.height / 3, 5, "bombermanFont", "", 24).setOrigin(0, 0);
+        this.lifeIcon = this.add.image(this.sys.canvas.height / 10, 2, "bombermanIcon").setOrigin(0, 0);
+        this.lifeIcon.setScale(.05)
+        this.lifeIcon.setDepth(20);
+        this.lifesTXT = this.add.bitmapText(this.sys.canvas.height / 6, 5, "bombermanFont", "", 24).setOrigin(0, 0);
         this.lifesTXT.setScrollFactor(0);
         this.lifesTXT.setDepth(20);
-        this.lifesTXT.text = "";
+        this.lifesTXT.text = "x";
         
         this.musicTheme = this.sound.add("theme");
         this.musicTheme.play();
@@ -57,7 +60,7 @@ export default class Phase1 extends Phaser.Scene{
         const spawnPlayer = map.findObject("Player", obj => obj.name === "PlayerSpawnPoint");
         this.player = new Player(80, this, spawnPlayer.x, spawnPlayer.y, localStorage.getItem("[BM]_player_sprite_walk"), localStorage.getItem("[BM]_player_sprite_death")); // em breve ele vai poder escolher seu personagem
         this.player.setDepth(2)
-        this.lifesTXT.text = "" + this.player.lifes;
+        this.lifesTXT.text = "x" + this.player.lifes;
         
         this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
             x: 100,

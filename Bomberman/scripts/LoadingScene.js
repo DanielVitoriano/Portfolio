@@ -29,6 +29,8 @@ export default class LoadingScene extends Phaser.Scene{
         url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
         this.load.plugin('rexvirtualjoystickplugin', url, true);
         //carregamentos:
+        this.load.image("fullscreen", "../Tiny Platformer/assets/Sprites/54431.png")
+        this.load.image("bombermanIcon", "../Bomberman/sprites/bombermanIcon.png");
 
         //font
         this.load.bitmapFont("bombermanFont", "../Bomberman/fonts/Bomberman.png", "../Bomberman/fonts/Bomberman.xml");
