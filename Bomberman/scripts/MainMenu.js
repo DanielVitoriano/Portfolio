@@ -44,7 +44,7 @@ export default class MainMenu extends Phaser.Scene{
         selected = 0;
         input = this.input.keyboard.createCursorKeys();
 
-        this.bg = this.add.image(0, 0, "menuBG").setOrigin(0);
+        this.bg = this.add.image(0, 0, "menuBG").setOrigin(0).setScale(.3);
 
         this.imgBlack = this.add.image(0, 0, 'player_Black_Walk', 6).setScale(1.5);
         this.imgBlue = this.add.image(0, 0, 'player_Blue_Walk', 6).setScale(1.5);
