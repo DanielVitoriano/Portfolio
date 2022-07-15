@@ -89,6 +89,7 @@ export default class LoadingScene extends Phaser.Scene{
 
         //Enemies
         this.load.spritesheet("ballon", "../Bomberman/sprites/enemies/ballon.png", {frameWidth: 16, frameHeight: 16});
+        this.load.spritesheet("enemyDie", "../Bomberman/sprites/enemies/destroy-enemy/destroy-enemy.png", {frameWidth: 14, frameHeight: 16});
 
         //sounds
         this.load.audio("bombExplosionSFX", "../Bomberman/music/bomb/explosion.mp3");

@@ -1,3 +1,5 @@
+import EnemyDeath from "./EnemyDeath.js";
+
 var bricks;
 var blocks;
 
@@ -11,13 +13,15 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
         this.scene = scene;
         this.scene.physics.world.enable(this);
         this.scene.add.existing(this);
-        this.body.setSize(8, 8, true);
+        this.body.setSize(14, 14, true);
         this.setDepth(1);
 
         this.dir = 0;
         this.speed = 20;
         this.directionX = 0;
         this.directionY = 0;
+
+        this.scene.physics.add.overlap(this.scene.player, this, function(player, self){player.Hit();});
 
         scene.anims.create({
             key: 'Enemy_Walk_left',
@@ -45,8 +49,10 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
             this.hited = true;
             this.body.setVelocity(0, 0);
             this.anims.play("Enemy_Hit", true);
-            this.disableBody(true, false);
-            this.destroy();
+            
+            let dieAnim = new EnemyDeath(this.scene, this.x, this.y, this,100);
+            this.disableBody(true, true);
+            //this.destroy();
         }
     }
 
@@ -56,7 +62,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
             switch(this.dir){
                 
                 case 1: //direita
-                    if(blocks.getTileAtWorldXY(this.x + 8, this.y) != null || bricks.getTileAtWorldXY(this.x + 8, this.y) != null){
+                    if(blocks.getTileAtWorldXY(this.x + 10, this.y) != null || bricks.getTileAtWorldXY(this.x + 10, this.y) != null){
                         this.dir = 0;
                         break;
                     }
@@ -66,7 +72,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
                     break;
                 
                 case 2: //esquerda
-                    if(blocks.getTileAtWorldXY(this.x - 8, this.y) != null || bricks.getTileAtWorldXY(this.x - 8, this.y) != null){
+                    if(blocks.getTileAtWorldXY(this.x - 10, this.y) != null || bricks.getTileAtWorldXY(this.x - 10, this.y) != null){
                         this.dir = 0;
                         break;
                     }
@@ -76,7 +82,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
                     break;
                 
                 case 3: //cima
-                    if(blocks.getTileAtWorldXY(this.x, this.y - 8) != null || bricks.getTileAtWorldXY(this.x, this.y - 8) != null){
+                    if(blocks.getTileAtWorldXY(this.x, this.y - 10) != null || bricks.getTileAtWorldXY(this.x, this.y - 10) != null){
                         this.dir = 0;
                         break;
                     }
@@ -85,7 +91,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite{
                     break;
                 
                 case 4: //baixo
-                    if(blocks.getTileAtWorldXY(this.x, this.y + 8) != null || bricks.getTileAtWorldXY(this.x, this.y + 8) != null){
+                    if(blocks.getTileAtWorldXY(this.x, this.y + 10) != null || bricks.getTileAtWorldXY(this.x, this.y + 10) != null){
                         this.dir = 0;
                         break;
                     }

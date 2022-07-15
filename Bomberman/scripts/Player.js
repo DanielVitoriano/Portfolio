@@ -3,9 +3,10 @@ import Bomb from "./Bomb.js";
 const dirState = {"right": 1, "left": -1, "up": -1, "down": 1};
 let horizontalDir;
 let verticalDir;
-let pumpForce = 3;
+let pumpForce;
 let maxBomb = 1;
 let bombsPlanted = 0;
+var tween;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(speed, scene, x, y, sprite_sheet, sprite_sheet_death){
@@ -31,6 +32,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.powerUpSFX = scene.sound.add("powerUp");
 
         this.lifes = 3;
+        pumpForce = 3;
+
+        tween = this.scene.tweens.add({
+            targets: this,
+            alpha: 0,
+            ease: 'PosDeath',
+            duration: 150,
+            yoyo: true,
+            repeat: 4
+        }); tween.pause();
 
         scene.anims.create({
             key: 'Player_Walk_Up',
@@ -70,7 +81,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     }
 
     Hit(){
-        if(!this.hited){
+        if(!this.hited && !tween.isPlaying()){
             this.loseSFX.on("complete", function(){return true});
             this.body.setVelocity(0, 0)
             this.hited = true;
@@ -84,21 +95,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
                     this.scene.GameOver();
                     this.scene.sound.stopByKey('theme');
                     this.loseSFX.play();
-                    this.teste = false;
                     this.loseSFX.on("complete", function(){this.scene.scene.start("Menu_Scene")}, this);   
                     return;
                 }
                 this.play("Player_Walk_Down", true);
                 this.hited = false;
                 this.Move("default");
-                var tween = this.scene.tweens.add({
-                    targets: this,
-                    alpha: 0,
-                    ease: 'PosDeath',
-                    duration: 150,
-                    yoyo: true,
-                    repeat: 4
-                });
+                tween.play();
                 this.setPosition(this.Xorigin, this.Yorigin);
             })
 

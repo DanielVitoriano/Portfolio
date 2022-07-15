@@ -12,6 +12,7 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite{
         scene.physics.add.collider(scene.bricks, this);
         scene.physics.add.collider(scene.blocks, this);
         scene.physics.add.collider(scene.player, this);
+        scene.physics.add.collider(scene.enemiesGroup, this);
 
         scene.anims.create({
             key: 'bomb_idle',
@@ -28,7 +29,6 @@ export default class Bomb extends Phaser.Physics.Arcade.Sprite{
         });
 
         this.play("bomb_idle");
-
 
         this.scene.time.addEvent({
             delay: time,
