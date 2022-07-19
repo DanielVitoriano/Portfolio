@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio</title>
     <link rel="shortcut icon" href="imagens/icone.ico">
-    <link rel="stylesheet" href="estilos/styles.css">
+    //<link rel="stylesheet" href="estilos/styles.css">
 </head>
 <body>
     <main>
@@ -19,7 +19,37 @@
         <article>
             <p><a href="./Bomberman/index.html"> <h2>Bomberman &#129046;</h2></a></p>
             <p>Projeto de estudo em Phaser 3.</p>
-            <video id="webCam"></video>
+            <script src="./min/instascan.min.js"></script>
+    <style>
+        .result{
+            background-color: green;
+            color:#fff;
+            padding:20px;
+        }
+        .row{
+            display:flex;
+        }
+        </style>
+        <div class="row">
+        <div class="col">
+            <div style="width:500px;" id="reader"></div>
+        </div>
+        <div class="col" style="padding:30px;">
+            <h4>SCAN RESULT</h4>
+            <div id="result">Result Here</div>
+        </div>
+        </div>
+        <script type="text/javascript">
+        function onScanSuccess(qrCodeMessage) {
+            document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
+        }
+        function onScanError(errorMessage) {
+        //handle scan error
+        }
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess, onScanError);
+    </script>
         </article>
         <hr>
         <hr>
@@ -48,19 +78,6 @@
         </article>
         <hr>
     </main>
-    <script src="./min/instascan.min.js"></script>
-    <script>
-        const scanner = new Instascan.Scanner({
-            video: document.getElementById("webCam")
-        });
-        scanner.addListener("scan", content => {
-            console.log(content);
-        });
-        Instascan.Camera.getCameras().then(cameras => {
-            if(cameras > 0){
-                scanner.start(cameras[0]);
-            }
-        })
-    </script>
+    
 </body>
 </html>
