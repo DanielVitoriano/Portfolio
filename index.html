@@ -19,7 +19,7 @@
         <article>
             <p><a href="./Bomberman/index.html"> <h2>Bomberman &#129046;</h2></a></p>
             <p>Projeto de estudo em Phaser 3.</p>
-            <img src="" alt="Bomberman">
+            <video id="webCam"></video>
         </article>
         <hr>
         <hr>
@@ -48,5 +48,19 @@
         </article>
         <hr>
     </main>
+    <script src="./min/instascan.min.js"></script>
+    <script>
+        const scanner = new Instascan.Scanner({
+            video: document.getElementById("webCam")
+        });
+        scanner.addListener("scan", content => {
+            console.log(content);
+        });
+        Instascan.Camera.getCameras().then(cameras => {
+            if(cameras > 0){
+                scanner.start(cameras[0]);
+            }
+        })
+    </script>
 </body>
 </html>

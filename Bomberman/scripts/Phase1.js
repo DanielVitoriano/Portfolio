@@ -7,6 +7,7 @@ import Enemies from "./Enemies.js";
 let dir = "";
 var map;
 var time = 180;
+let playerSpriteDeath, playerSpriteWalk;
 
 export default class Phase1 extends Phaser.Scene{
     constructor(){
@@ -15,9 +16,10 @@ export default class Phase1 extends Phaser.Scene{
         });
     }
 
-    load(){
+    init(data){
 
-
+        playerSpriteDeath =  data.spriteDeath;
+        playerSpriteWalk =  data.spriteWalk;
 
     }
 
@@ -67,7 +69,7 @@ export default class Phase1 extends Phaser.Scene{
         this.blocks.setDepth(1);
 
         const spawnPlayer = map.findObject("Player", obj => obj.name === "PlayerSpawnPoint");
-        this.player = new Player(65, this, spawnPlayer.x, spawnPlayer.y, localStorage.getItem("[BM]_player_sprite_walk"), localStorage.getItem("[BM]_player_sprite_death")); // em breve ele vai poder escolher seu personagem
+        this.player = new Player(65, this, spawnPlayer.x, spawnPlayer.y, playerSpriteWalk, playerSpriteDeath); // em breve ele vai poder escolher seu personagem
         this.player.setDepth(2)
         this.lifesTXT.text = "x" + this.player.lifes;
         
@@ -99,16 +101,20 @@ export default class Phase1 extends Phaser.Scene{
 
         this.Enemies = map.createFromObjects("Enemies", "Enemy", {});
         this.enemiesGroup = new Enemies(this.physics.world, this, [], this.Enemies);
-        console.log(this.enemiesGroup.getChildren().length)
 
     }
     
 
     update(){
-        for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
-            let a = this.enemiesGroup.getChildren()[x];
-            a.Move(this.bricks, this.blocks);
-        }
+        //for(let x = 0; x < this.enemiesGroup.getChildren().length; x ++){
+        //    let a = this.enemiesGroup.getChildren()[x];
+        //    a.Move(this.bricks, this.blocks);
+        //}
+
+        this.enemiesGroup.children.iterate((enemy) => {
+            enemy.Move(this.bricks, this.blocks);
+        });
+
         this.timeTXT.setText('Tempo: ' + (time - this.timedEvent.getProgress().toString().substr(0, 4)).toFixed(0));
         if(time <= 0 && !this.gameOver){
             time = 0;

@@ -1,6 +1,7 @@
 let arrayOpt = [];
 var selected;
 let input;
+let _player_sprite_walk, _player_sprite_death;
 
 export default class MainMenu extends Phaser.Scene{
     constructor(){
@@ -44,7 +45,7 @@ export default class MainMenu extends Phaser.Scene{
         selected = 0;
         input = this.input.keyboard.createCursorKeys();
 
-        this.bg = this.add.image(0, 0, "menuBG").setOrigin(0).setScale(.3);
+        this.bg = this.add.image(0, 0, "menuBG").setOrigin(0).setScale(.27);
 
         this.imgBlack = this.add.image(0, 0, 'player_Black_Walk', 6).setScale(1.5);
         this.imgBlue = this.add.image(0, 0, 'player_Blue_Walk', 6).setScale(1.5);
@@ -97,27 +98,30 @@ export default class MainMenu extends Phaser.Scene{
 
         switch(value){
             case 1:
-                localStorage.setItem("[BM]_player_sprite_walk", "player_Black_Walk");
-                localStorage.setItem("[BM]_player_sprite_death", "player_Black_Death");
+                _player_sprite_walk = "player_Black_Walk";
+                _player_sprite_death = "player_Black_Death";
                 break;
 
             case 2:
-                localStorage.setItem("[BM]_player_sprite_walk", "player_Blue_Walk");
-                localStorage.setItem("[BM]_player_sprite_death", "player_Blue_Death");
+                _player_sprite_walk ="player_Blue_Walk";
+                _player_sprite_death ="player_Blue_Death";
                 break;
 
             case 3:
-                localStorage.setItem("[BM]_player_sprite_walk", "player_Red_Walk");
-                localStorage.setItem("[BM]_player_sprite_death", "player_Red_Death");
+                _player_sprite_walk = "player_Red_Walk";
+                _player_sprite_death ="player_Red_Death";
                 break;
 
             case 4:
-                localStorage.setItem("[BM]_player_sprite_walk", "player_White_Walk");
-                localStorage.setItem("[BM]_player_sprite_death", "player_White_Death");
+                _player_sprite_walk = "player_White_Walk";
+                _player_sprite_death = "player_White_Death";
                 break;
 
         }
-        this.scene.start("Phase1_Scene");
+        this.scene.start("Phase1_Scene",{
+            spriteWalk: _player_sprite_walk,
+            spriteDeath: _player_sprite_death
+        });
     }
     
 }
