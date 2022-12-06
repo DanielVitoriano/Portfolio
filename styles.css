@@ -26,11 +26,15 @@ a:link {
     text-decoration: underline;
   }
 
-#conhecimentos{
-    height: 280px;
+#conhecimentos-scroll{
+    margin-left: 2.5%;
+    scroll-behavior: smooth;
+    width: 95%;
 
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    
+    padding-bottom: 2.5%;
 }
 
 .conhecimento{
@@ -45,12 +49,19 @@ a:link {
 }
 
 .conhecimento-tipos{
-    width: 90%;
-    height: 98%;
-
-    align-items: center;
-    box-shadow: 1px 2px 1px 1px #0575ED;
+    display: inline-table;
+    width: calc(25vw + 25vh);
+    height: calc(25vw + 25vh);
+    box-shadow: 1px 2px 2px 1px #0575ED;
     border-radius: 16px;
+    margin: 5%;
+    padding: 1%;
+
+    word-wrap: break-word;
+    white-space: normal;
+}
+.conhecimento-tipos h4{
+    text-align: center;
 }
 
 .borda{
@@ -110,19 +121,30 @@ a:link {
     text-shadow: .5px 1px 0 #232424, .5px 2px 0 #000000;
 }
 
-#foto-e-nome{
-    position: absolute;
-    flex-wrap: wrap;
+#base-foto-e-nome{
+    height: 40px;
+    width: 100%;
 
-    top: calc(2vw + 10vh + 5%);
-    left: calc(50vw - (6vw + 6vh));
+    margin: 0;
+    padding: 0; 
 
-    text-align: center;
+    display: flex;
+
     align-items: center;
+    justify-content: center;
+}
+
+#foto-e-nome{
+    z-index: 5;;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 #foto-de-perfil{
-
     border: 2px solid #057AF7;
     border-radius: 100%;
     background-image: url("./imagens/dcv.jpg");
@@ -130,8 +152,8 @@ a:link {
     background-position: 50%;
     background-size: cover;
 
-    height: calc(12vw + 12vh);
-    width: calc(12vw + 12vh);
+    height: calc(11vw + 11vh);
+    width: calc(11vw + 11vh);
 }
 
 #descricao-de-perfil{
@@ -253,6 +275,16 @@ hr{
 
 .contato-div p{
     text-align: center;
+}
+
+h1{
+    font-size: 1.5em;
+    color: #0575ED;
+    text-shadow: .5px 1px 0 #232424, .5px 2px 0 #000000;
+}
+
+.descricao-do-projeto{
+    font-size: 80%;
 }
 
 .contato img{
