@@ -162,31 +162,20 @@ a:link {
     font-size: larger;
 }
 
-hr{
+#bar{
     width: 70%;
-    border: 1px solid #057af765;
-    border-radius: 5px;
-    animation: teste 5s infinite linear;
-}
-
-@keyframes teste{
-    0%{
-        width: 20%;
-    }
-
-    50%{
-        width: 80%;
-    }
-
-    100%{
-        width: 20%;
-    }
+    height: 0.1em;
+    background-color: #057af765;
+    border-radius: 1em;
+    margin-top: 1em;
+    margin-left: 15%;
 }
 
 #projetos-scroll {
     margin-left: 2.5%;
     scroll-behavior: smooth;
     width: 95%;
+    height: 90%;
 
     white-space: nowrap;
     overflow-x: scroll;
@@ -209,7 +198,7 @@ hr{
 
 .imagem-do-projeto{
     width: 100%;
-    height: 50%;
+    height: auto;
     margin-top: 2%;
 }
 
@@ -249,6 +238,7 @@ hr{
 #contatos{
     width: 60%;
     margin-left: 20%;
+    margin-bottom: 5%;
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
@@ -260,6 +250,7 @@ hr{
     width: 35px;
     height: 35px;
     border-radius: 100%;
+    border: none;
     transform: rotateX(20deg);
     box-shadow: 0 2px 1px 1px rgb(151, 142, 142),0px 2.5px 0px 0px black,inset 0px .5px 0px 1px rgb(151, 142, 142);
     word-wrap: break-word;
@@ -293,15 +284,15 @@ h1{
     border-radius: 100%;
 }
 
-#email:hover{
+#email:active{
     background-color: #e9574c;
 }
 
-#numero:hover{
+#numero:active{
     background-color: #37cf54;
 }
 
-#linkedin:hover{
+#linkedin:active{
     background-color: #0a66c2;
 }
 
