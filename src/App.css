@@ -132,8 +132,10 @@ a:active {
   font-size: .9em;
 }
 .texto_descricao_de_perfil.secundaria{
+  text-align: center;
   font-size: .8em;
   text-align: initial;
+  padding: 0 10% 0 10%;
 }
 
 #foto-e-nome{
@@ -190,6 +192,7 @@ a:active {
   display: inline-flex;
   flex-direction: row;
   padding-bottom: 2.5%;
+  margin-bottom: 1%;
   align-items: center;
 }
 
@@ -222,7 +225,7 @@ a:active {
   width: 80vw;
   box-shadow: 0 1px 1px .5px #39FF14;
   border-radius: 80px;
-  height: 35px;
+  height: 40px;
   margin-bottom: 1%;
   background-color: rgb(49, 48, 48);
 
@@ -230,10 +233,10 @@ a:active {
 }
 
 .relacionado{
-  margin-left: 1%;
   border-radius: 100%;
-  width: 30px;
-  height: 30px;
+  width: auto;
+  height: 90%;
+  margin: 1%;
 }
 
 .relacionado img{
@@ -277,18 +280,20 @@ h1{
 }
 
 #contatos{
-  display: none !important;
   width: 60%;
   margin-left: 20%;
   margin-bottom: 5%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contato{
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 6px;
+  text-align: center;
+  padding: 0 2% 0% 2%;
   margin: 8px;
   width: auto;
   height: 45px;
@@ -298,17 +303,7 @@ h1{
   background-color: transparent;
   transition: all .5s;
   cursor: pointer;
-}
-
-.contato-div{
-  padding-top: 5%;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-}
-
-.contato-div p{
-  text-align: left;
+  font-size: 90%;
   font-weight: bold;
 }
 
@@ -326,9 +321,68 @@ h1{
 #numero:active, #numero:hover{
   background-color: #2add4b;
   box-shadow: 0px 0px 16px 6px #37cf54;
+  color: white;
 }
 
 #linkedin:active, #linkedin:hover{
+  color: white;
   background-color: #0582ff;
   box-shadow: 0px 0px 16px 6px #0a66c2;
+}
+
+@media screen and (min-width: 700px) {
+  #bar{
+    margin-top: 2px;
+  }
+  .texto_descricao_de_perfil{
+    font-size: calc(1vw + 1vh);
+  }
+  .texto_descricao_de_perfil.secundaria{
+    font-size: calc(.9vw + .9vh);
+    text-align: center;
+  }
+  #contatos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+  }
+  .contato{
+    width: 210px;
+    font-size: 1em;
+  }
+  #conhecimentos-scroll{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .conhecimento-tipos{
+    width: 20vw;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  .div-de-conteudo{
+    padding: 0px;
+  }
+  .relacionados{
+    width: 35vw;
+    height: 6vh;
+  }
+  .relacionado{
+    height: 80%;
+    width: auto;
+  }
+  .projeto{
+    height: 75vh;
+  }
+  .descricao-do-projeto h3{
+    font-size: calc(1vw + 1vh);
+  }
+  .descricao-do-projeto p{
+    font-size: 1.4em;
+  }
+  #bg-perfil{
+    background-size: 100% auto;
+  }
 }

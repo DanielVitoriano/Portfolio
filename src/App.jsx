@@ -53,10 +53,13 @@ function App() {
                 Ver aquilo em funcionamento é algo gratificante.
             </p>
         </div>  
+      </div>
+      <div className='div-de-conteudo'>
+      <h1>Contatos</h1>
         <div id="contatos">
-            <Contato id="email" value="daniel.costaht2@gmail.com" src="http://www.iconninja.com/files/266/651/581/black-email-icon.png"/>
-            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="https://www.iconninja.com/files/181/75/673/black-whatsapp-icon.png"/>
-            <Contato id="linkedin" href='https://www.linkedin.com/in/daniel-vitoriano-gd' value="daniel.costaht2@gmail.com" src="https://i.pinimg.com/originals/05/da/34/05da3431471058c803afacb2f5483f7b.png"/>
+            <Contato id="email" value="daniel.costaht2@gmail.com" src="https://uploads-ssl.webflow.com/58d9afff4f501c40503bfe06/5b51bcb32e9dd81b10d00a3a_white-email-icon.png"/>
+            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="http://getdrawings.com/vectors/logo-whatsapp-vector-34.png"/>
+            <Contato id="linkedin" href='https://www.linkedin.com/in/daniel-vitoriano-gd' value="Daniel Vitoriano" src="https://icon-library.com/images/linkedin-icon-png-transparent-background/linkedin-icon-png-transparent-background-8.jpg"/>
         </div>
       </div>
       <div id="conhecimentos" className="div-de-conteudo">
@@ -64,23 +67,23 @@ function App() {
         <div id="conhecimentos-scroll">
             <div id="linguagens-de-programacao" className="conhecimento-tipos">
                 <h4>Linguagens de Programação</h4>
-                <Conhecimento conhecimento="C#" porcentagem={10}/>
+                <Conhecimento conhecimento="C#" porcentagem={55}/>
                 <Conhecimento conhecimento="Java" porcentagem={20}/>
-                <Conhecimento conhecimento="JS" porcentagem={30}/>
-                <Conhecimento conhecimento="C" porcentagem={40}/>
+                <Conhecimento conhecimento="JS" porcentagem={60}/>
+                <Conhecimento conhecimento="C" porcentagem={18}/>
             </div>
     
             <div id="engines" className="conhecimento-tipos">
                 <h4>Game Engines e Frameworks</h4> 
-                <Conhecimento conhecimento="Unity" porcentagem={50}/>
-                <Conhecimento conhecimento="Godot" porcentagem={60}/>
-                <Conhecimento conhecimento="Phaser" porcentagem={70}/>
-                <Conhecimento conhecimento="React" porcentagem={80}/>
+                <Conhecimento conhecimento="Unity" porcentagem={61}/>
+                <Conhecimento conhecimento="Godot" porcentagem={15}/>
+                <Conhecimento conhecimento="Phaser" porcentagem={42}/>
+                <Conhecimento conhecimento="React" porcentagem={40}/>
             </div>
     
             <div id="linguas" className="conhecimento-tipos">
                 <h4>Linguagens</h4>
-               
+                <Conhecimento conhecimento="Inglês" porcentagem={35}/>
             </div>
         </div>
         
@@ -144,7 +147,7 @@ function App() {
               },
               {
                 link: "https://unity.com", 
-                foto:"https://yt3.ggpht.com/-n9YqjJCKHak/AAAAAAAAAAI/AAAAAAAAAAA/FJmfOSwUIuc/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
               }
               ]
               }
@@ -166,7 +169,7 @@ function App() {
                 },
                 {
                   link: "https://unity.com", 
-                  foto:"https://yt3.ggpht.com/-n9YqjJCKHak/AAAAAAAAAAI/AAAAAAAAAAA/FJmfOSwUIuc/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                  foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
                 }
                 ]
                 }
@@ -188,7 +191,7 @@ function App() {
                 },
                 {
                   link: "https://unity.com", 
-                  foto:"https://yt3.ggpht.com/-n9YqjJCKHak/AAAAAAAAAAI/AAAAAAAAAAA/FJmfOSwUIuc/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                  foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
                 }
                 ]
                 }
@@ -214,7 +217,7 @@ function App() {
                 },
                 {
                   link: "https://godotengine.org", 
-                  foto:"https://p7.hiclipart.com/preview/426/714/459/godot-game-engine-github-free-and-open-source-software-video-game-github.jpg"
+                  foto:"https://media.licdn.com/dms/image/C4E0BAQGt35gt5oH1DA/company-logo_200_200/0/1533663863337?e=1681344000&v=beta&t=wmgPjjYV0pjuQtocbyxrEHTWAMWUZXlWflZKqSODxk0"
                 }
                 ]
                 }
