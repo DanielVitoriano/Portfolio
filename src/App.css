@@ -330,6 +330,12 @@ h1{
   box-shadow: 0px 0px 16px 6px #0a66c2;
 }
 
+#github:active, #github:hover{
+  color: white;
+  background-color: #222222;
+  box-shadow: 0px 0px 16px 6px #c2c2c2;
+}
+
 @media screen and (min-width: 700px) {
   #bar{
     margin-top: 2px;

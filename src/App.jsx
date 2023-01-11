@@ -58,8 +58,9 @@ function App() {
       <h1>Contatos</h1>
         <div id="contatos">
             <Contato id="email" value="daniel.costaht2@gmail.com" src="https://uploads-ssl.webflow.com/58d9afff4f501c40503bfe06/5b51bcb32e9dd81b10d00a3a_white-email-icon.png"/>
-            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="http://getdrawings.com/vectors/logo-whatsapp-vector-34.png"/>
+            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="https://www.unifeb.edu.br/img/wpp-light.png"/>
             <Contato id="linkedin" href='https://www.linkedin.com/in/daniel-vitoriano-gd' value="Daniel Vitoriano" src="https://icon-library.com/images/linkedin-icon-png-transparent-background/linkedin-icon-png-transparent-background-8.jpg"/>
+            <Contato id="github" href='https://github.com/DanielVitoriano' value="Daniel Vitoriano" src="https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"/>
         </div>
       </div>
       <div id="conhecimentos" className="div-de-conteudo">
