@@ -10,7 +10,7 @@ const Projeto = (props) => {
               </div>
 
               <div className="imagem-do-projeto">
-                <img src={`${props.imagemJogo}`} alt="imagem do projeto"></img>
+                <img src={props.imagemJogo} alt="imagem do projeto"></img>
               </div>
               
               <article className="descricao-do-projeto">

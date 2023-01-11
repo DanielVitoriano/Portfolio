@@ -2,11 +2,6 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Conhecimento from './Components/Conhecimento';
 import Projeto from './Components/Projeto';
-
-import imagemSeliga from "./Assets/images/seLiga.webp";
-import imagemClickEsperto from "./Assets/images/clickEsperto.webp";
-import imagemKennyNoBreu from "./Assets/images/kennynobreu.png";
-import imagemVisaDXS from "./Assets/images/visadxs_play.png";
 import Contato from './Components/Contato';
 
 function App() {
@@ -58,7 +53,7 @@ function App() {
       <h1>Contatos</h1>
         <div id="contatos">
             <Contato id="email" value="daniel.costaht2@gmail.com" src="https://uploads-ssl.webflow.com/58d9afff4f501c40503bfe06/5b51bcb32e9dd81b10d00a3a_white-email-icon.png"/>
-            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="http://getdrawings.com/vectors/logo-whatsapp-vector-34.png"/>
+            <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="https://www.citypng.com/public/uploads/small/11639591398cynmtzqpagmzrjl2ghwmeqvosdzgtnu9fjyboo1nallafe4sdh47pk1akrme8fb8bx7g0h96ntwlsffnpxqzhkz7ncwowd41vwdh.png"/>
             <Contato id="linkedin" href='https://www.linkedin.com/in/daniel-vitoriano-gd' value="Daniel Vitoriano" src="https://icon-library.com/images/linkedin-icon-png-transparent-background/linkedin-icon-png-transparent-background-8.jpg"/>
         </div>
       </div>
@@ -103,7 +98,7 @@ function App() {
               },
               {
                 link: "https://pt-br.reactjs.org", 
-                foto:"http://jpie.nz/assets/images/2020/10/react-logo.png"
+                foto:"https://jpie.nz/assets/images/2020/10/react-logo.png"
               }
               ]
               }
@@ -152,7 +147,7 @@ function App() {
               ]
               }
               detalhesJogo = "Se Liga é um jogo educativo de quizz e exploração."
-              imagemJogo = {imagemSeliga}
+              imagemJogo = {"https://github.com/DanielVitoriano/Portfolio/blob/main/src/Assets/images/seLiga.webp"}
               nomeJogo = "Se Liga"
               linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.SeLiga&gl=US"
               descricaoJogo = "Monte o seu personagem e explore a cidade dos Desligados acompanhado de Lúcio. O jogador deve explorar a cidade coletando baterías e através de um Quizz ajudar as pessoas que realizam mau uso da energia elétrica." 
@@ -174,7 +169,7 @@ function App() {
                 ]
                 }
                 detalhesJogo = "Click Esperto consiste em um jogo de corrida infinita, do qual se deve economizar energia enquanto percorre a maior distância possível."
-                imagemJogo = {imagemClickEsperto}
+                imagemJogo = {"https://github.com/DanielVitoriano/Portfolio/blob/main/src/Assets/images/clickEsperto.webp"}
                 nomeJogo = "Click Esperto"
                 linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.ClickEsperto&gl=US"
                 descricaoJogo = "Escolha o seu personagem e corra pelas ruas da cidade dos desligados. Apaguê as lâmpadas, colete moedas e desvie dos obstáculos." 
@@ -196,7 +191,7 @@ function App() {
                 ]
                 }
                 detalhesJogo = "Kenny no breu, é um jogo de exploração e terror com puzzles."
-                imagemJogo = {imagemKennyNoBreu}
+                imagemJogo = {"https://github.com/DanielVitoriano/Portfolio/blob/main/src/Assets/images/kennynobreu.png"}
                 nomeJogo = "Kenny no Breu"
                 linkJogo = "https://gamejolt.com/games/kenny/615062"
                 descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
@@ -222,7 +217,7 @@ function App() {
                 ]
                 }
                 detalhesJogo = "VISADXS é um jogo de cartas sobre a cultura negra, afro e caribenha."
-                imagemJogo = {imagemVisaDXS}
+                imagemJogo = {"https://github.com/DanielVitoriano/Portfolio/blob/main/src/Assets/images/visadxs_play.png"}
                 nomeJogo = "VISADXS"
                 linkJogo = "https://www.livrolivrecurio.com.br/post/visadxs-um-jogo-de-representatividade"
                 descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
