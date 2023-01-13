@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.13397edf.css",
-    "main.js": "/static/js/main.5afbab74.js",
-    "static/media/visadxs_play.png": "/static/media/visadxs_play.517acb078dd3168545b4.png",
-    "static/media/kennynobreu.png": "/static/media/kennynobreu.02231babeed166fc8dcb.png",
-    "static/media/seLiga.webp": "/static/media/seLiga.b06673dd8db18cf35bfa.webp",
-    "static/media/clickEsperto.webp": "/static/media/clickEsperto.1f6b1f6388931b646236.webp",
-    "index.html": "/index.html",
-    "main.13397edf.css.map": "/static/css/main.13397edf.css.map",
-    "main.5afbab74.js.map": "/static/js/main.5afbab74.js.map"
+    "main.css": "/Portfolio/static/css/main.13397edf.css",
+    "main.js": "/Portfolio/static/js/main.4f36d185.js",
+    "static/media/visadxs_play.png": "/Portfolio/static/media/visadxs_play.517acb078dd3168545b4.png",
+    "static/media/kennynobreu.png": "/Portfolio/static/media/kennynobreu.02231babeed166fc8dcb.png",
+    "static/media/seLiga.webp": "/Portfolio/static/media/seLiga.b06673dd8db18cf35bfa.webp",
+    "static/media/clickEsperto.webp": "/Portfolio/static/media/clickEsperto.1f6b1f6388931b646236.webp",
+    "index.html": "/Portfolio/index.html",
+    "main.13397edf.css.map": "/Portfolio/static/css/main.13397edf.css.map",
+    "main.4f36d185.js.map": "/Portfolio/static/js/main.4f36d185.js.map"
   },
   "entrypoints": [
     "static/css/main.13397edf.css",
-    "static/js/main.5afbab74.js"
+    "static/js/main.4f36d185.js"
   ]
 }
