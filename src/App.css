@@ -179,7 +179,9 @@ a:active {
   border-radius: 1em;
   margin-top: 2em;
   margin-bottom: 1em;
-  margin-left: 15%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #projetos-scroll {
@@ -339,6 +341,7 @@ h1{
 @media screen and (min-width: 700px) {
   #bar{
     margin-top: 2px;
+    width: 35vw;
   }
   .texto_descricao_de_perfil{
     font-size: calc(1vw + 1vh);
@@ -356,7 +359,7 @@ h1{
   }
   .contato{
     width: 210px;
-    font-size: 1em;
+    font-size: calc(.5vw + .5vh);
   }
   #conhecimentos-scroll{
     display: flex;

@@ -210,7 +210,7 @@ function App() {
                 },
                 {
                   link: "https://becocultural.com.br/lei-aldir-blanc/", 
-                  foto:"https://mid.curitiba.pr.gov.br/2020/destaque/00307389.jpg"
+                  foto:"https://sulnoticias.net/wp-content/uploads/2020/09/Lei-Aldir-Blanc.jpg"
                 },
                 {
                   link: "https://www.livrolivrecurio.com.br", 
@@ -226,7 +226,7 @@ function App() {
                 imagemJogo = {imagemVisaDXS}
                 nomeJogo = "VISADXS"
                 linkJogo = "https://www.livrolivrecurio.com.br/post/visadxs-um-jogo-de-representatividade"
-                descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
+                descricaoJogo = "Combine os respectivos pares e descubra mais sobre as figuras presentes neste jogo." 
               />
         </div>
       </div>
