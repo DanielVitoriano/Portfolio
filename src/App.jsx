@@ -8,6 +8,7 @@ import imagemSeliga from "./Assets/images/seLiga.webp";
 import imagemClickEsperto from "./Assets/images/clickEsperto.webp";
 import imagemKennyNoBreu from "./Assets/images/kennynobreu.png";
 import imagemVisaDXS from "./Assets/images/visadxs_play.png";
+import imagemFruitHunt from "./Assets/images/fruithunt.png";
 
 function App() {
   const [anos, setAnos] = useState();
@@ -68,18 +69,18 @@ function App() {
         <div id="conhecimentos-scroll">
             <div id="linguagens-de-programacao" className="conhecimento-tipos">
                 <h4>Linguagens de Programação</h4>
-                <Conhecimento conhecimento="C#" porcentagem={55}/>
-                <Conhecimento conhecimento="Java" porcentagem={20}/>
-                <Conhecimento conhecimento="JS" porcentagem={60}/>
-                <Conhecimento conhecimento="C" porcentagem={18}/>
+                <Conhecimento conhecimento="C#" porcentagem={60}/>
+                <Conhecimento conhecimento="Java" porcentagem={15}/>
+                <Conhecimento conhecimento="JS" porcentagem={45}/>
+                <Conhecimento conhecimento="C" porcentagem={12}/>
             </div>
     
             <div id="engines" className="conhecimento-tipos">
                 <h4>Game Engines e Frameworks</h4> 
-                <Conhecimento conhecimento="Unity" porcentagem={61}/>
+                <Conhecimento conhecimento="Unity" porcentagem={62}/>
                 <Conhecimento conhecimento="Godot" porcentagem={15}/>
-                <Conhecimento conhecimento="Phaser" porcentagem={42}/>
-                <Conhecimento conhecimento="React" porcentagem={40}/>
+                <Conhecimento conhecimento="Phaser" porcentagem={35}/>
+                <Conhecimento conhecimento="React" porcentagem={30}/>
             </div>
     
             <div id="linguas" className="conhecimento-tipos">
@@ -108,10 +109,10 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Em breve novos detalhes"
+              detalhesJogo = "Aplicação para gerenciamento de jogo."
               imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = "Em progresso..."
-              linkJogo = "#"
+              nomeJogo = "Aplicação em desenvolvimento."
+              linkJogo = "#projetos"
               descricaoJogo = "" 
             />
 
@@ -130,10 +131,10 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Em breve novos detalhes"
+              detalhesJogo = "Aplicação Web Gameficada."
               imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = "Em progresso..."
-              linkJogo = "#"
+              nomeJogo = "Jogo em desenvolvimento."
+              linkJogo = "#projetos"
               descricaoJogo = "" 
             />
 
@@ -159,75 +160,92 @@ function App() {
               descricaoJogo = "Monte o seu personagem e explore a cidade dos Desligados acompanhado de Lúcio. O jogador deve explorar a cidade coletando baterías e através de um Quizz ajudar as pessoas que realizam mau uso da energia elétrica." 
             />
 
-              <Projeto relacionados={
-                [{
-                  link: "https://www.linkedin.com/company/fan-studios/", 
-                  foto:"https://media.licdn.com/dms/image/C4E0BAQHNnBZerw-YPw/company-logo_200_200/0/1519896941933?e=1681344000&v=beta&t=MmI1fyzGE5_6xUOV1ttrWOI1LTL0XYMZZw0aSq1gPJ0"
-                },
-                {
-                  link: "https://www.linkedin.com/company/copel/", 
-                  foto:"https://i1.wp.com/vagasabertas.org/wp-content/uploads/2014/06/Copel-Trabalhe-Conosco-Empregos-01.png?resize=187%2C187&ssl=1"
-                },
-                {
-                  link: "https://unity.com", 
-                  foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
-                }
-                ]
-                }
-                detalhesJogo = "Click Esperto consiste em um jogo de corrida infinita, do qual se deve economizar energia enquanto percorre a maior distância possível."
-                imagemJogo = {imagemClickEsperto}
-                nomeJogo = "Click Esperto"
-                linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.ClickEsperto&gl=US"
-                descricaoJogo = "Escolha o seu personagem e corra pelas ruas da cidade dos desligados. Apaguê as lâmpadas, colete moedas e desvie dos obstáculos." 
-              />
+            <Projeto relacionados={
+              [{
+                link: "https://www.linkedin.com/company/fan-studios/", 
+                foto:"https://media.licdn.com/dms/image/C4E0BAQHNnBZerw-YPw/company-logo_200_200/0/1519896941933?e=1681344000&v=beta&t=MmI1fyzGE5_6xUOV1ttrWOI1LTL0XYMZZw0aSq1gPJ0"
+              },
+              {
+                link: "https://www.linkedin.com/company/copel/", 
+                foto:"https://i1.wp.com/vagasabertas.org/wp-content/uploads/2014/06/Copel-Trabalhe-Conosco-Empregos-01.png?resize=187%2C187&ssl=1"
+              },
+              {
+                link: "https://unity.com", 
+                foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
+              }
+              ]
+              }
+              detalhesJogo = "Click Esperto consiste em um jogo de corrida infinita, do qual se deve economizar energia enquanto percorre a maior distância possível."
+              imagemJogo = {imagemClickEsperto}
+              nomeJogo = "Click Esperto"
+              linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.ClickEsperto&gl=US"
+              descricaoJogo = "Escolha o seu personagem e corra pelas ruas da cidade dos desligados. Apaguê as lâmpadas, colete moedas e desvie dos obstáculos." 
+            />
 
-              <Projeto relacionados={
-                [{
-                  link: "https://www.linkedin.com/in/liagodoy/", 
-                  foto:"https://media-exp1.licdn.com/dms/image/C4D03AQHaDNvwEs--sQ/profile-displayphoto-shrink_200_200/0/1652889752766?e=1674086400&v=beta&t=o2xId53IZET_BXw1zBdpA_s8RPVLE9LZMEK6PlW6ZSc"
-                },
-                {
-                  link: "https://www.youtube.com/c/CrieSeusJogos/videos", 
-                  foto:"https://yt3.ggpht.com/YNyHn5LCV6jRDMOYDQSj-VBxsdSIOtFxy41u0-CdVAuChDHusIlwl5I642GshY6_pzJrtn_E=s88-c-k-c0x00ffffff-no-rj"
-                },
-                {
-                  link: "https://unity.com", 
-                  foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
-                }
-                ]
-                }
-                detalhesJogo = "Kenny no breu, é um jogo de exploração e terror com puzzles."
-                imagemJogo = {imagemKennyNoBreu}
-                nomeJogo = "Kenny no Breu"
-                linkJogo = "https://gamejolt.com/games/kenny/615062"
-                descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
-              />
+            <Projeto relacionados={
+              [{
+                link: "https://www.linkedin.com/in/liagodoy/", 
+                foto:"https://media-exp1.licdn.com/dms/image/C4D03AQHaDNvwEs--sQ/profile-displayphoto-shrink_200_200/0/1652889752766?e=1674086400&v=beta&t=o2xId53IZET_BXw1zBdpA_s8RPVLE9LZMEK6PlW6ZSc"
+              },
+              {
+                link: "https://www.youtube.com/c/CrieSeusJogos/videos", 
+                foto:"https://yt3.ggpht.com/YNyHn5LCV6jRDMOYDQSj-VBxsdSIOtFxy41u0-CdVAuChDHusIlwl5I642GshY6_pzJrtn_E=s88-c-k-c0x00ffffff-no-rj"
+              },
+              {
+                link: "https://unity.com", 
+                foto:"https://media.licdn.com/dms/image/C560BAQHEIxCwW404IA/company-logo_200_200/0/1633446722058?e=1681344000&v=beta&t=Ix7hjghNBrJ9KPJ4V0219utk2bVzrbrZ8x5u4kvRtnc"
+              }
+              ]
+              }
+              detalhesJogo = "Kenny no breu, é um jogo de exploração e terror com puzzles."
+              imagemJogo = {imagemKennyNoBreu}
+              nomeJogo = "Kenny no Breu"
+              linkJogo = "https://gamejolt.com/games/kenny/615062"
+              descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
+            />
 
-              <Projeto relacionados={
-                [{
-                  link: "https://www.linkedin.com/in/liagodoy/", 
-                  foto:"https://media-exp1.licdn.com/dms/image/C4D03AQHaDNvwEs--sQ/profile-displayphoto-shrink_200_200/0/1652889752766?e=1674086400&v=beta&t=o2xId53IZET_BXw1zBdpA_s8RPVLE9LZMEK6PlW6ZSc"
-                },
-                {
-                  link: "https://becocultural.com.br/lei-aldir-blanc/", 
-                  foto:"https://sulnoticias.net/wp-content/uploads/2020/09/Lei-Aldir-Blanc.jpg"
-                },
-                {
-                  link: "https://www.livrolivrecurio.com.br", 
-                  foto:"https://agripestmanagement.co.uk/wp-content/uploads/2016/03/Bird-Icon.png"
-                },
-                {
-                  link: "https://godotengine.org", 
-                  foto:"https://media.licdn.com/dms/image/C4E0BAQGt35gt5oH1DA/company-logo_200_200/0/1533663863337?e=1681344000&v=beta&t=wmgPjjYV0pjuQtocbyxrEHTWAMWUZXlWflZKqSODxk0"
-                }
-                ]
-                }
-                detalhesJogo = "VISADXS é um jogo de cartas sobre a cultura negra, afro e caribenha."
-                imagemJogo = {imagemVisaDXS}
-                nomeJogo = "VISADXS"
-                linkJogo = "https://www.livrolivrecurio.com.br/post/visadxs-um-jogo-de-representatividade"
-                descricaoJogo = "Combine os respectivos pares e descubra mais sobre as figuras presentes neste jogo." 
-              />
+            <Projeto relacionados={
+              [{
+                link: "https://www.linkedin.com/in/liagodoy/", 
+                foto:"https://media-exp1.licdn.com/dms/image/C4D03AQHaDNvwEs--sQ/profile-displayphoto-shrink_200_200/0/1652889752766?e=1674086400&v=beta&t=o2xId53IZET_BXw1zBdpA_s8RPVLE9LZMEK6PlW6ZSc"
+              },
+              {
+                link: "https://becocultural.com.br/lei-aldir-blanc/", 
+                foto:"https://sulnoticias.net/wp-content/uploads/2020/09/Lei-Aldir-Blanc.jpg"
+              },
+              {
+                link: "https://www.livrolivrecurio.com.br", 
+                foto:"https://agripestmanagement.co.uk/wp-content/uploads/2016/03/Bird-Icon.png"
+              },
+              {
+                link: "https://godotengine.org", 
+                foto:"https://media.licdn.com/dms/image/C4E0BAQGt35gt5oH1DA/company-logo_200_200/0/1533663863337?e=1681344000&v=beta&t=wmgPjjYV0pjuQtocbyxrEHTWAMWUZXlWflZKqSODxk0"
+              }
+              ]
+              }
+              detalhesJogo = "VISADXS é um jogo de cartas sobre a cultura negra, afro e caribenha."
+              imagemJogo = {imagemVisaDXS}
+              nomeJogo = "VISADXS"
+              linkJogo = "https://www.livrolivrecurio.com.br/post/visadxs-um-jogo-de-representatividade"
+              descricaoJogo = "Combine os respectivos pares e descubra mais sobre as figuras presentes neste jogo." 
+            />
+            <Projeto relacionados={
+            [{
+              link: "https://www.linkedin.com/school/centro-universitario-farias-brito/", 
+              foto:"https://media.licdn.com/dms/image/C4E0BAQFWKiEHH2Cg8w/company-logo_200_200/0/1519866211119?e=1681948800&v=beta&t=r2VSuUFjzwT4H0vMSY8wtJaNTT4Zx1EPGyngg8cEWP8"
+            },
+            {
+              link: "https://godotengine.org", 
+              foto:"https://media.licdn.com/dms/image/C4E0BAQGt35gt5oH1DA/company-logo_200_200/0/1533663863337?e=1681344000&v=beta&t=wmgPjjYV0pjuQtocbyxrEHTWAMWUZXlWflZKqSODxk0"
+            }
+            ]
+            }
+            detalhesJogo = "Fruit Hunt é um jogo educativo de plataforma e corrida infinita"
+            imagemJogo = {imagemFruitHunt}
+            nomeJogo = "Fruit Hunt"
+            linkJogo = "https://github.com/DanielVitoriano/Fruit-Hunt"
+            descricaoJogo = "Pensado para ser jogado por crianças de 5 a 6 anos. O intuito do jogo consiste no aprendizado de novas palavras e em questão da boa alimentação." 
+          />
         </div>
       </div>
     </div>
