@@ -1,17 +1,18 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.0aa20553.css",
-    "main.js": "/Portfolio/static/js/main.7a495d48.js",
-    "static/media/visadxs_play.png": "/Portfolio/static/media/visadxs_play.517acb078dd3168545b4.png",
-    "static/media/kennynobreu.png": "/Portfolio/static/media/kennynobreu.02231babeed166fc8dcb.png",
+    "main.js": "/Portfolio/static/js/main.126582a7.js",
+    "static/media/visadxs_play.png": "/Portfolio/static/media/visadxs_play.65184ac778b9a23db774.png",
+    "static/media/fruithunt.png": "/Portfolio/static/media/fruithunt.960921863545406ee6b4.png",
+    "static/media/kennynobreu.png": "/Portfolio/static/media/kennynobreu.0c69a2312497d3ed26e9.png",
     "static/media/seLiga.webp": "/Portfolio/static/media/seLiga.b06673dd8db18cf35bfa.webp",
     "static/media/clickEsperto.webp": "/Portfolio/static/media/clickEsperto.1f6b1f6388931b646236.webp",
     "index.html": "/Portfolio/index.html",
     "main.0aa20553.css.map": "/Portfolio/static/css/main.0aa20553.css.map",
-    "main.7a495d48.js.map": "/Portfolio/static/js/main.7a495d48.js.map"
+    "main.126582a7.js.map": "/Portfolio/static/js/main.126582a7.js.map"
   },
   "entrypoints": [
     "static/css/main.0aa20553.css",
-    "static/js/main.7a495d48.js"
+    "static/js/main.126582a7.js"
   ]
 }
