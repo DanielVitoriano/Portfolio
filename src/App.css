@@ -224,7 +224,7 @@ a:active {
 
 .relacionados{
   display: flex;
-  width: 80vw;
+  width: calc(24vw + 24vh);
   box-shadow: 0 1px 1px .5px #39FF14;
   border-radius: 80px;
   height: 40px;
@@ -374,8 +374,7 @@ h1{
   .div-de-conteudo{
     padding: 0px;
   }
-  .relacionados{
-    width: 35vw;
+  .relacionados{  
     height: 6vh;
   }
   .relacionado{
