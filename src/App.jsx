@@ -3,6 +3,7 @@ import './App.css';
 import Conhecimento from './Components/Conhecimento';
 import Projeto from './Components/Projeto';
 import Contato from './Components/Contato';
+import textsJson from "./Assets/texts.json";
 
 import imagemSeliga from "./Assets/images/seLiga.webp";
 import imagemClickEsperto from "./Assets/images/clickEsperto.webp";
@@ -19,10 +20,20 @@ import imageFbuni from "./Assets/images/centro-universitario-farias-brito_logo.p
 
 function App() {
   const [anos, setAnos] = useState();
+  const [selectedLanguage, setSelectedLanguage] = useState("pt-br");
 
   useEffect(() => {
     setAnos(calcularIdade(1999, 7, 19));
+
+    const currentSelectedLanguage = localStorage.getItem("[DCV]_portfolio_selectedLanguage");
+    if(currentSelectedLanguage){
+      setSelectedLanguage(currentSelectedLanguage);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("[DCV]_portfolio_selectedLanguage", selectedLanguage)
+  }, [selectedLanguage]);
 
   function calcularIdade(anoAniversario, mesAniversario, diaAniversario) {
     const dataAtual = new Date();
@@ -38,9 +49,22 @@ function App() {
   
     return idade < 0 ? 0 : idade;
   }
+
+  function mudarLinguagem(){
+    switch(selectedLanguage){
+      case "pt-br":
+        setSelectedLanguage("en");
+        break;
+
+      case "en":
+        setSelectedLanguage("pt-br");
+        break;
+    }
+  }
   
   return (
     <div className="App">
+      <button id='butao_seletor_de_lingua' type='button' onClick={() => mudarLinguagem()}>{selectedLanguage}</button>
       <div id="perfil" className="div-de-conteudo">
         <div id="bg-perfil"></div>
         <div id="base-foto-e-nome">
@@ -54,16 +78,19 @@ function App() {
             <div id="bar"></div>
             <p className="texto_descricao_de_perfil">
                 Hello there!<br></br>
-                Daniel aqui, um jovem programador de {anos} anos.
+               {textsJson[selectedLanguage].texto_descricao_de_perfil.replace("%idade%", anos)}
             </p>
             <p className='texto_descricao_de_perfil secundaria'>
-                É fantastico você escrever linhas e daquilo criar algo. Seja o movimento de um personagem ou a funcionalidade de uma página.
-                Ver aquilo em funcionamento é algo gratificante.
+            {textsJson[selectedLanguage].texto_descricao_de_perfil_secundaria}
+            </p>
+            <h1>{textsJson[selectedLanguage].sobre}</h1>
+            <p className="texto_descricao_de_perfil secundaria">
+               {textsJson[selectedLanguage].descricao_sobre}
             </p>
         </div>  
       </div>
       <div className='div-de-conteudo'>
-      <h1>Contatos</h1>
+      <h1>{textsJson[selectedLanguage].contatos}</h1>
         <div id="contatos">
             <Contato id="email" value="daniel.costaht2@gmail.com" src="https://uploads-ssl.webflow.com/58d9afff4f501c40503bfe06/5b51bcb32e9dd81b10d00a3a_white-email-icon.png"/>
             <Contato id="numero" href='https://wa.me/qr/JM52EOUZOJLUO1' value="(85) 9 9418-6677" src="https://www.unifeb.edu.br/img/wpp-light.png"/>
@@ -72,10 +99,10 @@ function App() {
         </div>
       </div>
       <div id="conhecimentos" className="div-de-conteudo">
-        <h1>Conhecimentos</h1>
+        <h1>{textsJson[selectedLanguage].conhecimentos}</h1>
         <div id="conhecimentos-scroll">
             <div id="linguagens-de-programacao" className="conhecimento-tipos">
-                <h4>Linguagens de Programação</h4>
+                <h4>{textsJson[selectedLanguage].linguagens_de_programacao}</h4>
                 <Conhecimento conhecimento="C#" porcentagem={60}/>
                 <Conhecimento conhecimento="Java" porcentagem={15}/>
                 <Conhecimento conhecimento="JS" porcentagem={45}/>
@@ -83,7 +110,7 @@ function App() {
             </div>
     
             <div id="engines" className="conhecimento-tipos">
-                <h4>Game Engines e Frameworks</h4> 
+                <h4>{textsJson[selectedLanguage].engine_e_frameworks}</h4> 
                 <Conhecimento conhecimento="Unity" porcentagem={62}/>
                 <Conhecimento conhecimento="Godot" porcentagem={15}/>
                 <Conhecimento conhecimento="Phaser" porcentagem={35}/>
@@ -91,15 +118,15 @@ function App() {
             </div>
     
             <div id="linguas" className="conhecimento-tipos">
-                <h4>Linguagens</h4>
-                <Conhecimento conhecimento="Inglês" porcentagem={35}/>
+                <h4>{textsJson[selectedLanguage].linguagens}</h4>
+                <Conhecimento conhecimento={textsJson[selectedLanguage].ingles} porcentagem={35}/>
             </div>
         </div>
         
     </div>
 
       <div id="projetos" className="div-de-conteudo">
-        <h1>Projetos</h1>
+        <h1>{textsJson[selectedLanguage].projetos}</h1>
         <div id="projetos-scroll">
             <Projeto relacionados={
               [{
@@ -116,9 +143,9 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Aplicação para gerenciamento de jogo."
+              detalhesJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo2}
               imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = "Aplicação em desenvolvimento."
+              nomeJogo = {textsJson[selectedLanguage].em_desenvolvimento}
               linkJogo = "#projetos"
               descricaoJogo = "" 
             />
@@ -138,9 +165,9 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Aplicação Web Gameficada."
+              detalhesJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo1}
               imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = "Jogo em desenvolvimento."
+              nomeJogo = {textsJson[selectedLanguage].em_desenvolvimento}
               linkJogo = "#projetos"
               descricaoJogo = "" 
             />
@@ -160,11 +187,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Se Liga é um jogo educativo de quizz e exploração."
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_seliga}
               imagemJogo = {imagemSeliga}
               nomeJogo = "Se Liga"
               linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.SeLiga&gl=US"
-              descricaoJogo = "Monte o seu personagem e explore a cidade dos Desligados acompanhado de Lúcio. O jogador deve explorar a cidade coletando baterías e através de um Quizz ajudar as pessoas que realizam mau uso da energia elétrica." 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_seliga}
             />
 
             <Projeto relacionados={
@@ -182,11 +209,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Click Esperto consiste em um jogo de corrida infinita, do qual se deve economizar energia enquanto percorre a maior distância possível."
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_clickesperto}
               imagemJogo = {imagemClickEsperto}
               nomeJogo = "Click Esperto"
               linkJogo = "https://play.google.com/store/apps/details?id=com.Copel.ClickEsperto&gl=US"
-              descricaoJogo = "Escolha o seu personagem e corra pelas ruas da cidade dos desligados. Apaguê as lâmpadas, colete moedas e desvie dos obstáculos." 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_clickesperto}
             />
 
             <Projeto relacionados={
@@ -204,11 +231,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "Kenny no breu, é um jogo de exploração e terror com puzzles."
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_kenny}
               imagemJogo = {imagemKennyNoBreu}
               nomeJogo = "Kenny no Breu"
               linkJogo = "https://gamejolt.com/games/kenny/615062"
-              descricaoJogo = "Kenny está preso em seu pesadelo e você deve ajudá-lo a escapar, mas cuidado com as criaturas! Utilize a lanterna com sabedoria e desvende os mistérios." 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_kenny}
             />
 
             <Projeto relacionados={
@@ -230,11 +257,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = "VISADXS é um jogo de cartas sobre a cultura negra, afro e caribenha."
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_visadxs}
               imagemJogo = {imagemVisaDXS}
               nomeJogo = "VISADXS"
               linkJogo = "https://www.livrolivrecurio.com.br/post/visadxs-um-jogo-de-representatividade"
-              descricaoJogo = "Combine os respectivos pares e descubra mais sobre as figuras presentes neste jogo." 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_kenny} 
             />
             <Projeto relacionados={
             [{
@@ -247,11 +274,11 @@ function App() {
             }
             ]
             }
-            detalhesJogo = "Fruit Hunt é um jogo educativo de plataforma e corrida infinita"
+            detalhesJogo = {textsJson[selectedLanguage].detalhes_fruithunt}
             imagemJogo = {imagemFruitHunt}
             nomeJogo = "Fruit Hunt"
             linkJogo = "https://github.com/DanielVitoriano/Fruit-Hunt"
-            descricaoJogo = "Pensado para ser jogado por crianças de 5 a 6 anos. O intuito do jogo consiste no aprendizado de novas palavras e em questão da boa alimentação." 
+            descricaoJogo = {textsJson[selectedLanguage].descricao_fruithunt}
           />
         </div>
       </div>
