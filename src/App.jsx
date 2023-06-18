@@ -17,6 +17,7 @@ import imagemUnity from "./Assets/images/unity3d_30t70u3b.jpg";
 import imagemLia from "./Assets/images/lia.jpeg";
 import imagemGodot from "./Assets/images/godot.jpeg";
 import imageFbuni from "./Assets/images/centro-universitario-farias-brito_logo.png";
+import imageBiao from "./Assets/images/biao.webp";
 
 function App() {
   const [anos, setAnos] = useState();
@@ -59,6 +60,10 @@ function App() {
       case "en":
         setSelectedLanguage("pt-br");
         break;
+
+      default:
+        setSelectedLanguage("pt-br");
+        break;
     }
   }
   
@@ -76,14 +81,14 @@ function App() {
 
         <div id="descricao-de-perfil">
             <div id="bar"></div>
-            <p className="texto_descricao_de_perfil">
-                Hello there!<br></br>
-               {textsJson[selectedLanguage].texto_descricao_de_perfil.replace("%idade%", anos)}
-            </p>
             <p className='texto_descricao_de_perfil secundaria'>
             {textsJson[selectedLanguage].texto_descricao_de_perfil_secundaria}
             </p>
             <h1>{textsJson[selectedLanguage].sobre}</h1>
+            <p className="texto_descricao_de_perfil">
+                Hello there! <img alt='Obiwan Kenobi' src={imageBiao} style={{width: "calc(1vw + 1vh + 8px)", margin: "0%"}}></img><br></br>
+               {textsJson[selectedLanguage].texto_descricao_de_perfil.replace("%idade%", anos)}
+            </p>
             <p className="texto_descricao_de_perfil secundaria">
                {textsJson[selectedLanguage].descricao_sobre}
             </p>
