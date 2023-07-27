@@ -5,6 +5,8 @@ import Projeto from './Components/Projeto';
 import Contato from './Components/Contato';
 import textsJson from "./Assets/texts.json";
 
+import imagemArvorar from "./Assets/images/arvorar.png";
+import imagemArvorarGerenciador from "./Assets/images/arvorarGerenciador.png";
 import imagemSeliga from "./Assets/images/seLiga.webp";
 import imagemClickEsperto from "./Assets/images/clickEsperto.webp";
 import imagemKennyNoBreu from "./Assets/images/kennynobreu.png";
@@ -108,23 +110,25 @@ function App() {
         <div id="conhecimentos-scroll">
             <div id="linguagens-de-programacao" className="conhecimento-tipos">
                 <h4>{textsJson[selectedLanguage].linguagens_de_programacao}</h4>
-                <Conhecimento conhecimento="C#" porcentagem={60}/>
-                <Conhecimento conhecimento="Java" porcentagem={15}/>
-                <Conhecimento conhecimento="JS" porcentagem={45}/>
-                <Conhecimento conhecimento="C" porcentagem={12}/>
+                <Conhecimento conhecimento="C#" porcentagem={50}/>
+                <Conhecimento conhecimento="Java" porcentagem={10}/>
+                <Conhecimento conhecimento="JS" porcentagem={35}/>
+                <Conhecimento conhecimento="C" porcentagem={10}/>
+                <Conhecimento conhecimento="Python" porcentagem={5}/>
             </div>
     
             <div id="engines" className="conhecimento-tipos">
                 <h4>{textsJson[selectedLanguage].engine_e_frameworks}</h4> 
-                <Conhecimento conhecimento="Unity" porcentagem={62}/>
-                <Conhecimento conhecimento="Godot" porcentagem={15}/>
-                <Conhecimento conhecimento="Phaser" porcentagem={35}/>
-                <Conhecimento conhecimento="React" porcentagem={30}/>
+                <Conhecimento conhecimento="Unity" porcentagem={50}/>
+                <Conhecimento conhecimento="Godot" porcentagem={12}/>
+                <Conhecimento conhecimento="Phaser" porcentagem={20}/>
+                <Conhecimento conhecimento="React" porcentagem={25}/>
+                <Conhecimento conhecimento="Ionic" porcentagem={20}/>
             </div>
     
             <div id="linguas" className="conhecimento-tipos">
                 <h4>{textsJson[selectedLanguage].linguagens}</h4>
-                <Conhecimento conhecimento={textsJson[selectedLanguage].ingles} porcentagem={35}/>
+                <Conhecimento conhecimento={textsJson[selectedLanguage].ingles} porcentagem={30}/>
             </div>
         </div>
         
@@ -148,11 +152,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo2}
-              imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = {textsJson[selectedLanguage].em_desenvolvimento}
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_beachpark_jogo2}
+              imagemJogo = {imagemArvorarGerenciador}
+              nomeJogo = "Arvorar Gerenciador"
               linkJogo = "#projetos"
-              descricaoJogo = "" 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo2}
             />
 
             <Projeto relacionados={
@@ -170,11 +174,11 @@ function App() {
               }
               ]
               }
-              detalhesJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo1}
-              imagemJogo = {"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2F4lE8oT0ObwY%2Fmaxresdefault.jpg&f=1&nofb=1&ipt=5282c165933fa15f3de830c715ecd352af382cf8b26a9cd0dfb9763611595e6a&ipo=images"}
-              nomeJogo = {textsJson[selectedLanguage].em_desenvolvimento}
+              detalhesJogo = {textsJson[selectedLanguage].detalhes_beachpark_jogo1}
+              imagemJogo = {imagemArvorar}
+              nomeJogo = "Arvorar"
               linkJogo = "#projetos"
-              descricaoJogo = "" 
+              descricaoJogo = {textsJson[selectedLanguage].descricao_beachpark_jogo1}
             />
 
             <Projeto relacionados={
