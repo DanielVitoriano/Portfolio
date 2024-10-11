@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.9b8fba65.css",
-    "main.js": "/Portfolio/static/js/main.59c20f95.js",
+    "main.css": "/Portfolio/static/css/main.20873402.css",
+    "main.js": "/Portfolio/static/js/main.65c8cf6d.js",
     "static/media/arvorar.png": "/Portfolio/static/media/arvorar.0049740efe8b4c9f98ce.png",
+    "static/media/taoApp.png": "/Portfolio/static/media/taoApp.74b02908fa8a9c482de6.png",
     "static/media/profranca.png": "/Portfolio/static/media/profranca.409a705a0aabcc1844a7.png",
     "static/media/arvorarGerenciador.png": "/Portfolio/static/media/arvorarGerenciador.00b8f3c3ba14cf6c774d.png",
     "static/media/visadxs_play.png": "/Portfolio/static/media/visadxs_play.65184ac778b9a23db774.png",
@@ -18,11 +19,11 @@
     "static/media/godot.jpeg": "/Portfolio/static/media/godot.578bf1ac39d3f5a936ef.jpeg",
     "static/media/unity3d_30t70u3b.jpg": "/Portfolio/static/media/unity3d_30t70u3b.3c1d641be0015d7d92b3.jpg",
     "index.html": "/Portfolio/index.html",
-    "main.9b8fba65.css.map": "/Portfolio/static/css/main.9b8fba65.css.map",
-    "main.59c20f95.js.map": "/Portfolio/static/js/main.59c20f95.js.map"
+    "main.20873402.css.map": "/Portfolio/static/css/main.20873402.css.map",
+    "main.65c8cf6d.js.map": "/Portfolio/static/js/main.65c8cf6d.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b8fba65.css",
-    "static/js/main.59c20f95.js"
+    "static/css/main.20873402.css",
+    "static/js/main.65c8cf6d.js"
   ]
 }

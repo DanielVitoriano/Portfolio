@@ -26,8 +26,10 @@
         "descricao_fruithunt": "Projetado para ser jogado por crianças de 5 a 6 anos. O objetivo do jogo é aprender novas palavras e promover uma alimentação saudável.",
         "detalhes_profranca": "ProFRANCA tem como objetivo geral conservar a baleia-franca-austral.",
         "descricao_profranca": "Constitui em um APP híbrido (IOS e Android) sobre a história do Instituto Australis e a conservação das baleias francas. O App conta com recursos de RA, painéis interativos e loja.",
+        "detalhes_taoApp": "Tao APP tem como objetivo ensinar sobre a cultura chinesa.",
+        "descricao_taoApp": "Constitui em um APP Android sobre a cultura chinesa. Feito utilizando Angular, Cordova e Ionic.",
         "sobre": "Sobre",
-        "descricao_sobre": "Atualmente, sou estagiário na FanStudios, trabalhando em projetos usando Unity e frameworks como React, Phaser e Ionic. Comecei a estudar desenvolvimento de jogos em 2019 na FBUni e atualmente estou estudando na Descomplica. Abaixo, você pode ver minhas habilidades e meus projetos mais relevantes."
+        "descricao_sobre": "Atualmente, trabalho na FanStudios, desenvolvendo projetos usando Unity e frameworks como React, Phaser e Ionic. Comecei a estudar desenvolvimento de jogos em 2019 na FBUni e atualmente estou estudando na Descomplica. Abaixo, você pode ver minhas habilidades e meus projetos mais relevantes."
     },
     "en": {
         "texto_descricao_de_perfil": "Daniel here, a young programmer, %idade% years old.",
@@ -56,7 +58,9 @@
         "descricao_visadxs": "Match the respective pairs and learn more about the figures featured in this game.",
         "detalhes_fruithunt": "Fruit Hunt is an educational platformer and endless running game.",
         "descricao_fruithunt": "Designed to be played by children aged 5 to 6. The game aims to teach new words and promote good eating habits.",
+        "detalhes_taoApp": "Tao APP aims to teach about Chinese culture.",
+        "descricao_taoApp": "It is an Android APP about Chinese culture. Made using Angular, Cordova and Ionic.",
         "sobre": "About",
-        "descricao_sobre": "I am currently an intern at FanStudios, working on projects using Unity and frameworks like React, Phaser, and Ionic. I started studying game development in 2019 at FBUni and am currently studying at Descomplica. Below, you can see my skills and my most relevant projects."
+        "descricao_sobre": "I am currently working at FanStudios, working on projects using Unity and frameworks like React, Phaser, and Ionic. I started studying game development in 2019 at FBUni and am currently studying at Descomplica. Below, you can see my skills and my most relevant projects."
     }
 }

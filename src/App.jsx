@@ -23,6 +23,7 @@ import imagemBiao from "./Assets/images/biao.webp";
 import imagemProfranca from "./Assets/images/profranca.png";
 import imagemIonic from "./Assets/images/ionic.png";
 import imagemIa from "./Assets/images/ia.png";
+import imagemTaoApp from "./Assets/images/taoApp.png";
 
 function App() {
   const [anos, setAnos] = useState();
@@ -113,16 +114,16 @@ function App() {
         <div id="conhecimentos-scroll">
           <div id="linguagens-de-programacao" className="conhecimento-tipos">
             <h4>{textsJson[selectedLanguage].linguagens_de_programacao}</h4>
-            <Conhecimento conhecimento="C#" porcentagem={50} />
+            <Conhecimento conhecimento="C#" porcentagem={60} />
             <Conhecimento conhecimento="Java" porcentagem={10} />
-            <Conhecimento conhecimento="JS" porcentagem={35} />
+            <Conhecimento conhecimento="JS" porcentagem={45} />
             <Conhecimento conhecimento="C" porcentagem={10} />
             <Conhecimento conhecimento="Python" porcentagem={5} />
           </div>
 
           <div id="engines" className="conhecimento-tipos">
             <h4>{textsJson[selectedLanguage].engine_e_frameworks}</h4>
-            <Conhecimento conhecimento="Unity" porcentagem={50} />
+            <Conhecimento conhecimento="Unity" porcentagem={55} />
             <Conhecimento conhecimento="Godot" porcentagem={12} />
             <Conhecimento conhecimento="Phaser" porcentagem={20} />
             <Conhecimento conhecimento="React" porcentagem={25} />
@@ -131,7 +132,7 @@ function App() {
 
           <div id="linguas" className="conhecimento-tipos">
             <h4>{textsJson[selectedLanguage].linguagens}</h4>
-            <Conhecimento conhecimento={textsJson[selectedLanguage].ingles} porcentagem={30} />
+            <Conhecimento conhecimento={textsJson[selectedLanguage].ingles} porcentagem={50} />
           </div>
         </div>
 
@@ -140,6 +141,33 @@ function App() {
       <div id="projetos" className="div-de-conteudo">
         <h1>{textsJson[selectedLanguage].projetos}</h1>
         <div id="projetos-scroll">
+
+        <Projeto relacionados={
+            [{
+              link: "https://www.linkedin.com/company/fan-studios/",
+              foto: imagemFan
+            },
+            {
+              link: "https://www.instagram.com/taichichuanfortaleza/",
+              foto: "http://www.taichichuanfortaleza.com.br/style/images/logo.png"
+            },
+            {
+              link: "https://ionicframework.com",
+              foto: imagemIonic
+            },
+            {
+              link: "https://angular.dev/",
+              foto: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fopenclipart.org%2Fimage%2F2400px%2Fsvg_to_png%2F272339%2Fangular.png&f=1&nofb=1&ipt=da1b9d7ed508176558c7486c141bf075c783169807ad4bd5ddc6df27d6156574&ipo=images"
+            }
+            ]
+          }
+            detalhesJogo={textsJson[selectedLanguage].detalhes_taoApp}
+            imagemJogo={imagemTaoApp}
+            nomeJogo="Tao APP"
+            linkJogo="https://play.google.com/store/apps/details?id=io.taoapp.fs"
+            descricaoJogo={textsJson[selectedLanguage].descricao_taoApp}
+          />
+
           <Projeto relacionados={
             [{
               link: "https://www.linkedin.com/company/fan-studios/",
@@ -217,7 +245,7 @@ function App() {
             },
             {
               link: "https://www.linkedin.com/company/copel/",
-              foto: "https://i1.wp.com/vagasabertas.org/wp-content/uploads/2014/06/Copel-Trabalhe-Conosco-Empregos-01.png?resize=187%2C187&ssl=1"
+              foto: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fblog-static.infra.grancursosonline.com.br%2Fwp-content%2Fuploads%2F2015%2F07%2F03171005%2Fcopel-2-2015.jpg&f=1&nofb=1&ipt=a228445e4fbd5ffec2c22488d4679c8027a992b02bd5ae4fb25bd7b8cb58fd66&ipo=images"
             },
             {
               link: "https://unity.com",
@@ -239,7 +267,7 @@ function App() {
             },
             {
               link: "https://www.linkedin.com/company/copel/",
-              foto: "https://i1.wp.com/vagasabertas.org/wp-content/uploads/2014/06/Copel-Trabalhe-Conosco-Empregos-01.png?resize=187%2C187&ssl=1"
+              foto: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fblog-static.infra.grancursosonline.com.br%2Fwp-content%2Fuploads%2F2015%2F07%2F03171005%2Fcopel-2-2015.jpg&f=1&nofb=1&ipt=a228445e4fbd5ffec2c22488d4679c8027a992b02bd5ae4fb25bd7b8cb58fd66&ipo=images"
             },
             {
               link: "https://unity.com",
